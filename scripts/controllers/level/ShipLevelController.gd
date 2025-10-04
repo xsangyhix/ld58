@@ -5,9 +5,10 @@ class_name ShipLevelController
 
 var parent_id: String
 var ship_type: String
-
+var audio_hub: AudioHub
 
 func _ready() -> void:
+	audio_hub = get_node("/root/MainAudioHub")
 	var level_data: LevelData = LevelLoader.load_current_level()
 	print(level_data.is_initialized)
 	
@@ -24,6 +25,7 @@ func _input(event: InputEvent) -> void:
 		serialize_level()
 		
 		
+		audio_hub.play_bottle_exit()
 		var parent_level_data: LevelData = LevelLoader.load_level(parent_id)
 		LevelLoader.set_level_as_current(parent_level_data.level_id)
 		var parent_level_packed_scene = PrefabLoader.load_level(parent_level_data)

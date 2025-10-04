@@ -9,9 +9,11 @@ var ship_ui_controller: ShipUiController
 var ship_state_machine: StateMachine
 var ship_id: String = UUID.v4()
 var parent_id: String
+var audio_hub: AudioHub
 
 
 func _ready() -> void:
+	audio_hub = get_node("/root/MainAudioHub")
 	ship_state_machine = find_child("StateMachine")
 
 	ship_area_2d = find_child("Area2D")
@@ -57,6 +59,7 @@ func _load_next_ship() -> void:
 	if scene_root is LevelController:
 		scene_root.serialize_level()
 	
+	audio_hub.play_bottle_open()
 	var ship_packed_scene = PrefabLoader.load_level(LevelLoader.load_current_level())
 	get_tree().change_scene_to_packed(ship_packed_scene)
 
