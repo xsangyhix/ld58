@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(4, 30)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
+speed = 150.0
 jump_velocity = -250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -16,3 +17,6 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

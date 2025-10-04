@@ -1,5 +1,13 @@
-﻿extends Node
-class_name State
+﻿class_name State
+extends Node
+
+
+func handle_input(_input_event: InputEvent, _fsm_context: FsmContext):
+	pass
+
+
+func handle_unhandled_input(_input_event: InputEvent, _fsm_context: FsmContext):
+	pass	
 
 
 func update(_delta: float, _fsm_context: FsmContext) -> void:

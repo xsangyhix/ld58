@@ -17,13 +17,10 @@ tile_set = ExtResource("1_j8ivh")
 [node name="Player" parent="." instance=ExtResource("2_j8ivh")]
 position = Vector2(205, 208)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-
 [node name="objects" type="Node" parent="."]
 
 [node name="Table" parent="objects" instance=ExtResource("3_nd71p")]
 position = Vector2(369, 239)
 
-[node name="BottledShip" parent="." instance=ExtResource("4_7ddre")]
-position = Vector2(367, 219)
+[node name="BottledShip" parent="objects" instance=ExtResource("4_7ddre")]
+position = Vector2(367, 214)

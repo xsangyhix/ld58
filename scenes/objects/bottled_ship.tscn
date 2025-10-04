@@ -1,9 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf00kghqxn82c"]
+[gd_scene load_steps=9 format=3 uid="uid://bf00kghqxn82c"]
 
+[ext_resource type="Script" uid="uid://d0ga82dynwaas" path="res://scripts/controllers/ship/bottled_ship.gd" id="1_2x2ep"]
 [ext_resource type="Texture2D" uid="uid://dq0cww3jf07c3" path="res://sprites/objects/bottled_ship_01.png" id="1_lkove"]
+[ext_resource type="Script" uid="uid://dxd1o8yb705nv" path="res://scripts/controllers/ship/ship_ui_controller.gd" id="3_1soim"]
+[ext_resource type="Script" uid="uid://by1s7vmqc7ssu" path="res://scripts/fsm/state_machine.gd" id="4_eys7x"]
+[ext_resource type="Script" uid="uid://lom7jg5cbf8p" path="res://scripts/controllers/ship/fsm/state_ship_active.gd" id="5_c47fr"]
+[ext_resource type="Script" uid="uid://fa8wit0syaea" path="res://scripts/controllers/ship/fsm/state_ship_passive.gd" id="6_ihdb4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkove"]
+radius = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2x2ep"]
+font_size = 12
 
 [node name="BottledShip" type="Node2D"]
+script = ExtResource("1_2x2ep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
 texture = ExtResource("1_lkove")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lkove")
+
+[node name="ShipUIController" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_1soim")
+
+[node name="ShipEnterIndicator" type="Label" parent="ShipUIController"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_right = 60.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Press E to enter"
+label_settings = SubResource("LabelSettings_2x2ep")
+horizontal_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_eys7x")
+initial_state = NodePath("StateShipPassive")
+metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
+
+[node name="StateShipActive" type="Node" parent="StateMachine"]
+script = ExtResource("5_c47fr")
+
+[node name="StateShipPassive" type="Node" parent="StateMachine"]
+script = ExtResource("6_ihdb4")
+metadata/_custom_type_script = "uid://fa8wit0syaea"
