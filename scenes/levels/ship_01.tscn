@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://drm5to8cnf5de"]
+[gd_scene load_steps=6 format=4 uid="uid://drm5to8cnf5de"]
 
 [ext_resource type="TileSet" uid="uid://cfswvtfl2vpo6" path="res://resources/main_tileset.tres" id="1_ernxq"]
+[ext_resource type="Script" uid="uid://bi2yfnal7syjq" path="res://scripts/controllers/level/ShipLevelController.gd" id="1_mjt5m"]
 [ext_resource type="PackedScene" uid="uid://cndu2leestfme" path="res://scenes/objects/table.tscn" id="2_xnxd3"]
 [ext_resource type="PackedScene" uid="uid://bf00kghqxn82c" path="res://scenes/objects/bottled_ship.tscn" id="3_mjt5m"]
 [ext_resource type="PackedScene" uid="uid://ck7n88twxlt0n" path="res://scenes/player.tscn" id="4_xnxd3"]
 
-[node name="Ship01" type="Node2D"]
+[node name="Ship01" type="Node2D" node_paths=PackedStringArray("_objects")]
+script = ExtResource("1_mjt5m")
+_objects = NodePath("Objects")
 
 [node name="Terrain" type="Node" parent="."]
 
@@ -18,8 +21,9 @@ tile_set = ExtResource("1_ernxq")
 [node name="Table" parent="Objects" instance=ExtResource("2_xnxd3")]
 position = Vector2(272, 209)
 
+[node name="BottledShip" parent="Objects" instance=ExtResource("3_mjt5m")]
+position = Vector2(270, 184)
+ship_type = "ship_02"
+
 [node name="Player" parent="." instance=ExtResource("4_xnxd3")]
 position = Vector2(19, -18)
-
-[node name="BottledShip" parent="." instance=ExtResource("3_mjt5m")]
-position = Vector2(270, 184)

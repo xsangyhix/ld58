@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://idjcfrs12vkp"]
+[gd_scene load_steps=6 format=4 uid="uid://idjcfrs12vkp"]
 
+[ext_resource type="Script" uid="uid://bi2yfnal7syjq" path="res://scripts/controllers/level/ShipLevelController.gd" id="1_3dvox"]
 [ext_resource type="TileSet" uid="uid://cfswvtfl2vpo6" path="res://resources/main_tileset.tres" id="1_bpdqu"]
 [ext_resource type="PackedScene" uid="uid://cndu2leestfme" path="res://scenes/objects/table.tscn" id="2_2ytif"]
 [ext_resource type="PackedScene" uid="uid://ck7n88twxlt0n" path="res://scenes/player.tscn" id="2_3dvox"]
 [ext_resource type="PackedScene" uid="uid://bf00kghqxn82c" path="res://scenes/objects/bottled_ship.tscn" id="3_3dvox"]
 
-[node name="Ship01" type="Node2D"]
+[node name="Ship01" type="Node2D" node_paths=PackedStringArray("_objects")]
+script = ExtResource("1_3dvox")
+_objects = NodePath("Objects")
 
 [node name="Terrain" type="Node" parent="."]
 

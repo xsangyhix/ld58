@@ -13,8 +13,9 @@ radius = 25.0
 [sub_resource type="LabelSettings" id="LabelSettings_2x2ep"]
 font_size = 12
 
-[node name="BottledShip" type="Node2D"]
+[node name="BottledShip" type="Node2D" groups=["ships"]]
 script = ExtResource("1_2x2ep")
+ship_type = "ship_01"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lkove")

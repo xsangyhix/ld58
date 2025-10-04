@@ -8,7 +8,7 @@ size = Vector2(4, 30)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
-speed = 150.0
+speed = 350.0
 jump_velocity = -250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
