@@ -19,7 +19,7 @@ tile_set = ExtResource("1_bpdqu")
 position = Vector2(687, 177)
 
 [node name="BottledShip" parent="Objects" instance=ExtResource("3_3dvox")]
-position = Vector2(686, 152)
+position = Vector2(687, 152)
 
 [node name="Player" parent="." instance=ExtResource("2_3dvox")]
 position = Vector2(24, -17)

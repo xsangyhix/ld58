@@ -23,4 +23,4 @@ position = Vector2(205, 208)
 position = Vector2(369, 239)
 
 [node name="BottledShip" parent="objects" instance=ExtResource("4_7ddre")]
-position = Vector2(367, 214)
+position = Vector2(368, 214)

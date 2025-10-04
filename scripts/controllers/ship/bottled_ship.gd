@@ -27,15 +27,15 @@ func on_player_exit(player_node: Node2D) -> void:
 	if not player_node.is_in_group("player"):
 		return
 	
-	ship_state_machine.request_state("StateShipActive")
+	ship_state_machine.request_state("StateShipPassive")
 
 
 func _process(_delta: float) -> void:
 
 	_process_ship_visibility()
 	
-#	if fsm_context["load_ship"]:
-#		_load_next_ship()
+	if ship_state_machine.fsm_context.get_value_bool("load_ship", false):
+		_load_next_ship()
 		
 		
 func _load_next_ship() -> void:
@@ -49,5 +49,6 @@ func _process_ship_visibility() -> void:
 	
 	var target_visibility = fsm_context_memory["is_ship_enter_label_visible"]
 	if ship_ui_controller.is_ship_etner_label_visible() != target_visibility:
+		print("changing ship visibility to %s" % [str(target_visibility)])
 		ship_ui_controller.set_ship_enter_label_visibility(target_visibility)
 	

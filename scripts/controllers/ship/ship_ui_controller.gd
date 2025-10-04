@@ -20,4 +20,7 @@ func is_ship_etner_label_visible() -> bool:
 	return ship_enter_label.visible
 
 func set_ship_enter_label_visibility(input_state: bool) -> void:
-	if input_state: show_ship_enter_label(); hide_ship_enter_label()
+	if input_state:
+		show_ship_enter_label()
+	else:
+		hide_ship_enter_label()

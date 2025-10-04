@@ -18,8 +18,8 @@ tile_set = ExtResource("1_ernxq")
 [node name="Table" parent="Objects" instance=ExtResource("2_xnxd3")]
 position = Vector2(272, 209)
 
-[node name="BottledShip" parent="Objects" instance=ExtResource("3_mjt5m")]
-position = Vector2(272, 184)
-
 [node name="Player" parent="." instance=ExtResource("4_xnxd3")]
 position = Vector2(19, -18)
+
+[node name="BottledShip" parent="." instance=ExtResource("3_mjt5m")]
+position = Vector2(270, 184)
