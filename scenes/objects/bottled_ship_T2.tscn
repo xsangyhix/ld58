@@ -32,8 +32,8 @@ gravity = Vector3(0, 98, 0)
 
 [node name="BottledShip" type="Node2D" node_paths=PackedStringArray("ship_particle_controller", "ship_sprite_2d", "ship_area_2d") groups=["ships"]]
 script = ExtResource("1_it8g5")
-ship_type = "ship_01"
-ship_tier = "T1"
+ship_type = "random"
+ship_tier = "T2"
 ship_particle_controller = NodePath("ParticleSystem")
 ship_sprite_2d = NodePath("Sprite2D")
 ship_area_2d = NodePath("Area2D")

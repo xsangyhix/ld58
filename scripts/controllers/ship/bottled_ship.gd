@@ -107,8 +107,12 @@ func generate_level_data() -> LevelData:
 	level_data.is_initialized = false
 	level_data.level_id = ship_id
 	level_data.parent_id = parent_id
-	level_data.ship_type = ship_type
 	level_data.ship_tier = ship_tier
+	
+	if ship_type == "random":
+		level_data.ship_type = PrefabLoader.get_random_ship_type(ship_tier)
+	else:
+		level_data.ship_type = ship_type
 	
 	return level_data
 

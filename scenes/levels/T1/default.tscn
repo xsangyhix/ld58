@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dvubb364wq5ny"]
+[gd_scene load_steps=8 format=4 uid="uid://drm5to8cnf5de"]
 
 [ext_resource type="TileSet" uid="uid://cfswvtfl2vpo6" path="res://resources/main_tileset.tres" id="1_ernxq"]
 [ext_resource type="Script" uid="uid://bi2yfnal7syjq" path="res://scripts/controllers/level/ShipLevelController.gd" id="1_mjt5m"]

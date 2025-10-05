@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsqg1iose3hju"]
+[gd_scene load_steps=21 format=3 uid="uid://dsqg1iose3hju"]
 
 [ext_resource type="Script" uid="uid://d0ga82dynwaas" path="res://scripts/controllers/ship/bottled_ship.gd" id="1_dt74a"]
 [ext_resource type="Texture2D" uid="uid://dra0yjtbynteq" path="res://sprites/objects/bottled_ship_03.png" id="2_dt74a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://csel6vr1awo5e" path="res://sprites/objects/bottle_particle_01.png" id="9_ag7ui"]
 [ext_resource type="Texture2D" uid="uid://2y60whopo5k5" path="res://sprites/objects/ship_particle_01.png" id="10_lqpdm"]
 [ext_resource type="Texture2D" uid="uid://dmqxund5rwmvb" path="res://sprites/objects/particles/ghost_particle_01.png" id="11_syv3d"]
+[ext_resource type="Script" uid="uid://dly1hx62in0td" path="res://scripts/controllers/ship/ghost_particle_controller.gd" id="12_p5hf5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lkove"]
 radius = 25.0
@@ -61,7 +62,7 @@ alpha_curve = SubResource("CurveTexture_5le8c")
 
 [node name="BottledShip" type="Node2D" node_paths=PackedStringArray("ship_particle_controller", "ship_sprite_2d", "ship_area_2d") groups=["ships"]]
 script = ExtResource("1_dt74a")
-ship_type = "ship_01"
+ship_type = "random"
 ship_tier = "T3"
 ship_particle_controller = NodePath("ParticleSystem")
 ship_sprite_2d = NodePath("Sprite2D")
@@ -162,8 +163,10 @@ process_material = SubResource("ParticleProcessMaterial_op60w")
 
 [node name="FVX" type="Node2D" parent="."]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="FVX"]
+[node name="GhostParticles" type="GPUParticles2D" parent="FVX" node_paths=PackedStringArray("ship_root")]
 amount = 3
 texture = ExtResource("11_syv3d")
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_4rkv5")
+script = ExtResource("12_p5hf5")
+ship_root = NodePath("../..")

@@ -24,3 +24,17 @@ static func load_level(level_data: LevelData) -> Resource:
 		return load("res://scenes/root_scene.tscn")
 	
 	return load_ship(level_data.ship_type, level_data.ship_tier)
+
+
+static func get_random_ship_type(ship_tier: String) -> String:
+	if not ship_tier in ["T1", "T2", "T3"]:
+		return "default"
+		
+	var directory_path: String = "res://scenes/levels/{tier}".format({"tier": ship_tier})
+	var ship_directory: DirAccess = DirAccess.open(directory_path)
+	
+	var ship_types: PackedStringArray = ship_directory.get_files()
+	var rng = RandomNumberGenerator.new()
+	var ship_index: int = rng.randi_range(0, ship_types.size() - 1)
+	
+	return ship_types[ship_index].get_basename()
