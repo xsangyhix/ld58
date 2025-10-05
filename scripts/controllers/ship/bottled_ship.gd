@@ -12,11 +12,11 @@ var ship_ui_controller: ShipUiController
 var ship_state_machine: StateMachine
 var ship_id: String = UUID.v4()
 var parent_id: String
-var audio_hub: AudioHub
+var _audio_hub: AudioHub
 
 
 func _ready() -> void:
-	audio_hub = get_node("/root/MainAudioHub")
+	_audio_hub = get_node("/root/MainAudioHub")
 	ship_state_machine = find_child("StateMachine")
 	
 	ship_area_2d.body_entered.connect(on_player_enter)
@@ -43,17 +43,27 @@ func _process(_delta: float) -> void:
 
 	_process_ship_visibility()
 	
-	if ship_state_machine.fsm_context.get_value_bool("load_ship", false):
+	if _get_fsm_context_bool("load_ship", false):
 		_load_next_ship()
 	
-	if ship_state_machine.fsm_context.get_value_bool("break", false):
-		_play_break()
-		
-	if ship_state_machine.fsm_context.get_value_bool("remove", false):
+	if _get_fsm_context_bool("collect_ship", false):
+		_get_player().collect_ship(generate_ship_data())
 		get_parent().remove_child(self)
 		queue_free()
 		
+	
+	if _get_fsm_context_bool("break", false):
+		_play_break()
 		
+	if _get_fsm_context_bool("remove", false):
+		get_parent().remove_child(self)
+		queue_free()
+		
+
+func _get_fsm_context_bool(value_name: String, _default_value: bool = false) -> bool:
+	return ship_state_machine.fsm_context.get_value_bool(value_name, _default_value)
+
+	
 func _load_next_ship() -> void:
 	var does_save_exist = LevelLoader.does_level_exist(ship_id)
 	
@@ -68,7 +78,7 @@ func _load_next_ship() -> void:
 	if scene_root is LevelController:
 		scene_root.serialize_level()
 	
-	audio_hub.play_bottle_open()
+	_audio_hub.play_bottle_open()
 	var ship_packed_scene = PrefabLoader.load_level(LevelLoader.load_current_level())
 	get_tree().change_scene_to_packed(ship_packed_scene)
 
@@ -79,8 +89,8 @@ func _process_ship_visibility() -> void:
 	if not fsm_context_memory.has("is_ship_enter_label_visible"): return
 	
 	var target_visibility = fsm_context_memory["is_ship_enter_label_visible"]
-	if ship_ui_controller.is_ship_etner_label_visible() != target_visibility:
-		ship_ui_controller.set_ship_enter_label_visibility(target_visibility)
+	if ship_ui_controller.is_ship_label_visible() != target_visibility:
+		ship_ui_controller.set_ship_label_visibility(target_visibility)
 	
 func generate_ship_data() -> ShipData:
 	var ship_data: ShipData = ShipData.new()
@@ -109,3 +119,5 @@ func _play_break() -> void:
 func mark_to_destroy() -> void:
 	ship_state_machine.request_state("StateShipBreak")
 	
+func _get_player() -> PlayerController:
+	return get_tree().get_nodes_in_group("player")[0]

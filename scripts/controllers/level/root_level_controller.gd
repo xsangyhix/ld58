@@ -16,10 +16,12 @@ func get_level_id() -> String:
 	
 
 func serialize_level() -> void:
+	_get_player().serialize_player()
+
 	var level_data: LevelData = LevelData.new()
 	level_data.is_root = true
 	level_data.level_id = get_level_id()
-	level_data.player_position = super._get_player().position
+	level_data.player_position = _get_player().position
 	var ship_objects: Array[BottledShip] =  super._get_ships()
 	
 	var ships_data: Array[ShipData] = []

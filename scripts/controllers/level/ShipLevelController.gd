@@ -57,6 +57,7 @@ func mark_bottle_to_destroy() -> void:
 func serialize_level() -> void:
 	var level_data: LevelData = _generate_level_data()
 	LevelLoader.save_level(level_data)
+	_get_player().serialize_player()
 	
 	
 func _assign_ids(level_data: LevelData) -> void:

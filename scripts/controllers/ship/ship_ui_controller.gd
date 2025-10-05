@@ -2,25 +2,27 @@ extends Control
 class_name ShipUiController
 
 
-var ship_enter_label: Label
+@export var ship_enter_label: Label
+@export var ship_collect_label: Label
 
 func _ready() -> void:
-	ship_enter_label = find_child("ShipEnterIndicator")
-	call_deferred("hide_ship_enter_label")
+	call_deferred("hide_ship_labels")
 
 
-func show_ship_enter_label() -> void:
+func show_ship_labels() -> void:
 	ship_enter_label.visible = true
+	ship_collect_label.visible = true
 	
 	
-func hide_ship_enter_label() -> void:
+func hide_ship_labels() -> void:
 	ship_enter_label.visible = false
+	ship_collect_label.visible = false
 
-func is_ship_etner_label_visible() -> bool:
+func is_ship_label_visible() -> bool:
 	return ship_enter_label.visible
 
-func set_ship_enter_label_visibility(input_state: bool) -> void:
+func set_ship_label_visibility(input_state: bool) -> void:
 	if input_state:
-		show_ship_enter_label()
+		show_ship_labels()
 	else:
-		hide_ship_enter_label()
+		hide_ship_labels()

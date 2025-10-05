@@ -3,16 +3,21 @@ class_name PlayerController
 
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
+@export var _ui_controller: PlayerUiController
+@export var _player_sprite: Sprite2D
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var moving_right: bool = true
-var player_sprite: Sprite2D
+var _audio_hub: AudioHub
+
+var _collected_ships: Array[ShipData] = []
 
 
 func _ready() -> void:
-	player_sprite = find_child("PlayerSprite")
-
+	_audio_hub = get_node("/root/MainAudioHub")
+	deserialize_player()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,8 +44,33 @@ func _process(_delta: float) -> void:
 	
 	if moving_right and input_direction < 0:
 		moving_right = false
-		player_sprite.set_flip_h(true)
+		_player_sprite.set_flip_h(true)
 		
 	if (not moving_right) and input_direction > 0:
 		moving_right = true
-		player_sprite.set_flip_h(false)
+		_player_sprite.set_flip_h(false)
+
+
+func deserialize_player() -> void:
+	if not LevelLoader.does_player_exist():
+		return
+
+	var player_data: PlayerData = LevelLoader.load_player()
+	
+	_ui_controller.set_player_hp(player_data.player_hp)
+	_collected_ships = player_data.collected_ships
+	_ui_controller.set_ship_count(_collected_ships.size())
+
+func serialize_player() -> void:
+	var player_data: PlayerData = PlayerData.new()
+	
+	player_data.player_hp = _ui_controller.get_player_hp()
+	player_data.collected_ships = _collected_ships
+	
+	LevelLoader.save_player(player_data)
+
+
+func collect_ship(ship_data: ShipData) -> void:
+	_collected_ships.append(ship_data)
+	_ui_controller.add_ship()
+	_audio_hub.play_collect_bottle()

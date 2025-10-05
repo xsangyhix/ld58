@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://10awsr3gl848"]
+[gd_scene load_steps=5 format=3 uid="uid://10awsr3gl848"]
 
 [ext_resource type="Script" uid="uid://621lgtfqd64t" path="res://scripts/controllers/audio/audio_hub.gd" id="1_s2lie"]
 [ext_resource type="AudioStream" uid="uid://c7cw3u434m8fd" path="res://audio/sfx/botttle_open.wav" id="2_tqpvg"]
 [ext_resource type="AudioStream" uid="uid://w1bsnalbu68c" path="res://audio/sfx/bottle_out.wav" id="3_k7yxl"]
+[ext_resource type="AudioStream" uid="uid://pqotsn2kvf76" path="res://audio/sfx/put_in_inventory.wav" id="4_tqpvg"]
 
 [node name="AudioHub" type="AudioStreamPlayer2D"]
 script = ExtResource("1_s2lie")
 bottle_open_sfx = ExtResource("2_tqpvg")
 bottle_exit_sfx = ExtResource("3_k7yxl")
+collect_bottle_sfx = ExtResource("4_tqpvg")
 metadata/_custom_type_script = "uid://621lgtfqd64t"

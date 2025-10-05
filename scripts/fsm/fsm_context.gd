@@ -1,4 +1,4 @@
-﻿class_name FsmContext
+class_name FsmContext
 
 
 

@@ -45,7 +45,8 @@ texture = ExtResource("1_lkove")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_lkove")
 
-[node name="ShipUIController" type="Control" parent="."]
+[node name="ShipUIController" type="Control" parent="." node_paths=PackedStringArray("ship_enter_label", "ship_collect_label")]
+z_index = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,6 +62,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_1soim")
+ship_enter_label = NodePath("ShipEnterIndicator")
+ship_collect_label = NodePath("ShipCollectIndicator")
 
 [node name="ShipEnterIndicator" type="Label" parent="ShipUIController"]
 layout_mode = 1
@@ -72,6 +75,20 @@ offset_right = 60.5
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "Press E to enter"
+label_settings = SubResource("LabelSettings_2x2ep")
+horizontal_alignment = 1
+
+[node name="ShipCollectIndicator" type="Label" parent="ShipUIController"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 34.0
+offset_right = 61.0
+offset_bottom = 57.0
+grow_horizontal = 2
+text = "Press F to collect"
 label_settings = SubResource("LabelSettings_2x2ep")
 horizontal_alignment = 1
 
