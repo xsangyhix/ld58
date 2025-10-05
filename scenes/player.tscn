@@ -11,8 +11,11 @@ size = Vector2(4, 30)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_ui_controller", "_player_sprite") groups=["player"]]
 script = ExtResource("1_g2els")
-speed = 350.0
+speed = 150.0
 jump_velocity = -250.0
+acceleration = 150.0
+deceleration = 500.0
+floor_drag = 900.0
 _ui_controller = NodePath("CanvasLayer/PlayerUi")
 _player_sprite = NodePath("PlayerSprite")
 

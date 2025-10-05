@@ -3,6 +3,12 @@ class_name PlayerController
 
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
+@export var acceleration: float = 100
+@export var deceleration: float = 200
+@export var floor_drag: float = 500
+@export var coyote_time: float = 0.5
+
+
 @export var _ui_controller: PlayerUiController
 @export var _player_sprite: Sprite2D
 
@@ -11,6 +17,8 @@ class_name PlayerController
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var moving_right: bool = true
 var _audio_hub: AudioHub
+var _time_airborne: float
+var _used_double_jump = false
 
 var _collected_ships: Array[ShipData] = []
 
@@ -23,18 +31,31 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		_time_airborne += delta
+	else:
+		_time_airborne = 0
+		_used_double_jump = false
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and _can_jump():
 		velocity.y = jump_velocity
+		_time_airborne += coyote_time
+	elif Input.is_action_just_pressed("jump") and _can_double_jump():
+		velocity.y = jump_velocity
+		_used_double_jump = true
+		
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * speed
+		velocity.x = move_toward(velocity.x, speed, acceleration * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0, floor_drag * delta)
 
 	move_and_slide()
 
@@ -78,3 +99,10 @@ func collect_ship(ship_data: ShipData) -> void:
 
 func deal_damage(damage_points: int) -> void:
 	_ui_controller.remove_player_hp(damage_points)
+
+
+func _can_jump() -> bool:
+	return is_on_floor() or _time_airborne < coyote_time
+	
+func _can_double_jump() -> bool:
+	return not _used_double_jump
