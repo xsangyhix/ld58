@@ -3,6 +3,7 @@ class_name BottledShip
 
 
 @export var ship_type: String
+@export var ship_tier: String
 @export var ship_particle_controller: BottledShipParticleController
 @export var ship_sprite_2d: Sprite2D
 @export var ship_area_2d: Area2D
@@ -65,9 +66,8 @@ func _get_fsm_context_bool(value_name: String, _default_value: bool = false) -> 
 
 	
 func _load_next_ship() -> void:
-	var does_save_exist = LevelLoader.does_level_exist(ship_id)
 	
-	if does_save_exist:
+	if LevelLoader.does_level_exist(ship_id):
 		LevelLoader.set_level_as_current(ship_id)
 	else:
 		var new_level_data: LevelData = generate_level_data()
@@ -98,6 +98,7 @@ func generate_ship_data() -> ShipData:
 	ship_data.ship_position = position
 	ship_data.ship_id = ship_id
 	ship_data.ship_type = ship_type
+	ship_data.ship_tier = ship_tier
 	
 	return ship_data
 	
@@ -107,6 +108,7 @@ func generate_level_data() -> LevelData:
 	level_data.level_id = ship_id
 	level_data.parent_id = parent_id
 	level_data.ship_type = ship_type
+	level_data.ship_tier = ship_tier
 	
 	return level_data
 

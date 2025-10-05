@@ -59,11 +59,13 @@ func _regenerate_assets(level_data: LevelData) -> void:
 		ship.queue_free()
 		
 	for ship_data in level_data.ships:
-		var packaged_ship_scene: Resource = PrefabLoader.load_bottled_ship(ship_data.ship_type)
+		var packaged_ship_scene: Resource = PrefabLoader.load_bottled_ship(ship_data)
 		var bottled_ship: BottledShip = packaged_ship_scene.instantiate()
 		_objects.add_child(bottled_ship)
 		bottled_ship.position = ship_data.ship_position
 		bottled_ship.ship_id = ship_data.ship_id
+		bottled_ship.ship_tier = ship_data.ship_tier
+		bottled_ship.ship_type = ship_data.ship_type
 		
 		if ship_data.is_bottle_broken:
 			bottled_ship.mark_to_destroy()

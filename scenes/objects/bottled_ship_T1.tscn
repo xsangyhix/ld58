@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf00kghqxn82c"]
+[gd_scene load_steps=14 format=3 uid="uid://6ehkdytvkqn4"]
 
-[ext_resource type="Script" uid="uid://d0ga82dynwaas" path="res://scripts/controllers/ship/bottled_ship.gd" id="1_2x2ep"]
-[ext_resource type="Texture2D" uid="uid://dq0cww3jf07c3" path="res://sprites/objects/bottled_ship_01.png" id="1_lkove"]
-[ext_resource type="Script" uid="uid://dxd1o8yb705nv" path="res://scripts/controllers/ship/ship_ui_controller.gd" id="3_1soim"]
-[ext_resource type="Script" uid="uid://by1s7vmqc7ssu" path="res://scripts/fsm/state_machine.gd" id="4_eys7x"]
-[ext_resource type="Script" uid="uid://lom7jg5cbf8p" path="res://scripts/controllers/ship/fsm/state_ship_active.gd" id="5_c47fr"]
-[ext_resource type="Script" uid="uid://fa8wit0syaea" path="res://scripts/controllers/ship/fsm/state_ship_passive.gd" id="6_ihdb4"]
-[ext_resource type="Texture2D" uid="uid://csel6vr1awo5e" path="res://sprites/objects/bottle_particle_01.png" id="7_ihdb4"]
-[ext_resource type="Script" uid="uid://btc44ww3xrl47" path="res://scripts/controllers/ship/BottledShipParticleController.gd" id="7_op8ni"]
-[ext_resource type="Script" uid="uid://cvgpb6a0j3xip" path="res://scripts/controllers/ship/fsm/state_ship_break.gd" id="7_op60w"]
-[ext_resource type="Texture2D" uid="uid://2y60whopo5k5" path="res://sprites/objects/ship_particle_01.png" id="8_op8ni"]
+[ext_resource type="Script" uid="uid://d0ga82dynwaas" path="res://scripts/controllers/ship/bottled_ship.gd" id="1_wnj27"]
+[ext_resource type="Texture2D" uid="uid://dq0cww3jf07c3" path="res://sprites/objects/bottled_ship_01.png" id="2_ttxo8"]
+[ext_resource type="Script" uid="uid://dxd1o8yb705nv" path="res://scripts/controllers/ship/ship_ui_controller.gd" id="3_uyfbg"]
+[ext_resource type="Script" uid="uid://by1s7vmqc7ssu" path="res://scripts/fsm/state_machine.gd" id="4_864rt"]
+[ext_resource type="Script" uid="uid://lom7jg5cbf8p" path="res://scripts/controllers/ship/fsm/state_ship_active.gd" id="5_s6q83"]
+[ext_resource type="Script" uid="uid://fa8wit0syaea" path="res://scripts/controllers/ship/fsm/state_ship_passive.gd" id="6_iaq3n"]
+[ext_resource type="Script" uid="uid://cvgpb6a0j3xip" path="res://scripts/controllers/ship/fsm/state_ship_break.gd" id="7_4cd4c"]
+[ext_resource type="Script" uid="uid://btc44ww3xrl47" path="res://scripts/controllers/ship/BottledShipParticleController.gd" id="8_ohcrp"]
+[ext_resource type="Texture2D" uid="uid://csel6vr1awo5e" path="res://sprites/objects/bottle_particle_01.png" id="9_mdqeq"]
+[ext_resource type="Texture2D" uid="uid://2y60whopo5k5" path="res://sprites/objects/ship_particle_01.png" id="10_31ijd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lkove"]
 radius = 25.0
@@ -31,7 +31,7 @@ angular_velocity_max = 499.99997
 gravity = Vector3(0, 98, 0)
 
 [node name="BottledShip" type="Node2D" node_paths=PackedStringArray("ship_particle_controller", "ship_sprite_2d", "ship_area_2d") groups=["ships"]]
-script = ExtResource("1_2x2ep")
+script = ExtResource("1_wnj27")
 ship_type = "ship_01"
 ship_tier = "T1"
 ship_particle_controller = NodePath("ParticleSystem")
@@ -39,7 +39,7 @@ ship_sprite_2d = NodePath("Sprite2D")
 ship_area_2d = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lkove")
+texture = ExtResource("2_ttxo8")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -62,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("3_1soim")
+script = ExtResource("3_uyfbg")
 ship_enter_label = NodePath("ShipEnterIndicator")
 ship_collect_label = NodePath("ShipCollectIndicator")
 
@@ -94,29 +94,29 @@ label_settings = SubResource("LabelSettings_2x2ep")
 horizontal_alignment = 1
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_eys7x")
+script = ExtResource("4_864rt")
 initial_state = NodePath("StateShipPassive")
 metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
 
 [node name="StateShipActive" type="Node" parent="StateMachine"]
-script = ExtResource("5_c47fr")
+script = ExtResource("5_s6q83")
 
 [node name="StateShipPassive" type="Node" parent="StateMachine"]
-script = ExtResource("6_ihdb4")
+script = ExtResource("6_iaq3n")
 metadata/_custom_type_script = "uid://fa8wit0syaea"
 
 [node name="StateShipBreak" type="Node" parent="StateMachine"]
-script = ExtResource("7_op60w")
+script = ExtResource("7_4cd4c")
 
 [node name="ParticleSystem" type="Node2D" parent="." node_paths=PackedStringArray("glass_particles", "wood_particles")]
-script = ExtResource("7_op8ni")
+script = ExtResource("8_ohcrp")
 glass_particles = NodePath("GPUParticles2DGlass")
 wood_particles = NodePath("GPUParticles2DWood")
 
 [node name="GPUParticles2DGlass" type="GPUParticles2D" parent="ParticleSystem"]
 emitting = false
 amount = 35
-texture = ExtResource("7_ihdb4")
+texture = ExtResource("9_mdqeq")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
@@ -125,7 +125,7 @@ process_material = SubResource("ParticleProcessMaterial_op60w")
 [node name="GPUParticles2DWood" type="GPUParticles2D" parent="ParticleSystem"]
 emitting = false
 amount = 25
-texture = ExtResource("8_op8ni")
+texture = ExtResource("10_31ijd")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0

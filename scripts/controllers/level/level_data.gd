@@ -9,6 +9,7 @@ class_name LevelData
 @export var is_root: bool = false
 @export var parent_id: String
 @export var ship_type: String
+@export var ship_tier: String
 
 
 func clean_up_broken_ships() -> LevelData:

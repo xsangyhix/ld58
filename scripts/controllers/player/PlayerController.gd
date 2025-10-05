@@ -74,3 +74,7 @@ func collect_ship(ship_data: ShipData) -> void:
 	_collected_ships.append(ship_data)
 	_ui_controller.add_ship()
 	_audio_hub.play_collect_bottle()
+
+
+func deal_damage(damage_points: int) -> void:
+	_ui_controller.remove_player_hp(damage_points)

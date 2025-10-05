@@ -1,4 +1,4 @@
-﻿class_name LevelLoader
+class_name LevelLoader
 
 
 static func save_level(level_data: LevelData) -> void:
@@ -65,6 +65,7 @@ static func does_level_exist(level_id: String) -> bool:
 static func does_player_exist() -> bool:
 	return ResourceLoader.exists(_generate_player_path())
 
+
 static func remove_saved_files() -> void:
 	_check_or_create_save_directory()
 	var save_directory: DirAccess = DirAccess.open(_generate_save_directory_path())
@@ -72,6 +73,7 @@ static func remove_saved_files() -> void:
 	
 	for file_path in save_files:
 		save_directory.remove(file_path)
+
 
 static func _check_or_create_save_directory() -> void:
 	if not DirAccess.dir_exists_absolute(_generate_save_directory_path()):

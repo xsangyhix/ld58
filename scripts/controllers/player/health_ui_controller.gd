@@ -1,4 +1,4 @@
-﻿extends Control
+extends Control
 class_name HealthUiController
 
 
@@ -16,6 +16,7 @@ var background_height: float
 func _ready() -> void:
 	background_width = health_bar_background.size.x
 	background_height = health_bar_background.size.y
+	_update_rect()
 
 
 func set_hp(input_hp: int) -> void:
@@ -31,9 +32,7 @@ func set_max_hp() -> void:
 
 func _update_rect() -> void:
 	var target_health_bar_width: float = _get_hp_percentage() * background_width
-	var target_health_bar_size: Vector2 = Vector2(target_health_bar_width,background_height)
-	
-	health_bar.size = target_health_bar_size
+	health_bar.custom_minimum_size = Vector2(target_health_bar_width, 0)
 
 func _get_hp_percentage() -> float:
 	return clampf(float(_hp)/float(_max_hp), 0, 1)

@@ -11,7 +11,12 @@ func get_player_hp() -> int:
 	
 func set_player_hp(target_hp: int) -> void:
 	health_controller.set_hp(target_hp)
-	
+
+
+func remove_player_hp(hp_to_remove: int) -> void:
+	health_controller.add_hp(-hp_to_remove)
+
+
 func add_ship() -> void:
 	backpack_controller.add_ship()
 	

@@ -6,6 +6,7 @@ class_name ShipLevelController
 var parent_id: String
 var ship_type: String
 var audio_hub: AudioHub
+var ship_tier: String
 
 func _ready() -> void:
 	audio_hub = get_node("/root/MainAudioHub")
@@ -64,6 +65,7 @@ func _assign_ids(level_data: LevelData) -> void:
 	level_id = level_data.level_id
 	parent_id = level_data.parent_id
 	ship_type = level_data.ship_type
+	ship_tier = level_data.ship_tier
 
 func _generate_level_data() -> LevelData:
 	var level_data: LevelData = LevelData.new()
@@ -83,6 +85,7 @@ func _generate_level_data() -> LevelData:
 	
 	level_data.is_initialized = true
 	level_data.ship_type = ship_type
+	level_data.ship_tier = ship_tier
 	
 	return level_data
 	
