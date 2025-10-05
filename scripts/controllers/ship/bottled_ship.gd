@@ -3,8 +3,11 @@ class_name BottledShip
 
 
 @export var ship_type: String
+@export var ship_particle_controller: BottledShipParticleController
+@export var ship_sprite_2d: Sprite2D
+@export var ship_area_2d: Area2D
 
-var ship_area_2d: Area2D
+
 var ship_ui_controller: ShipUiController
 var ship_state_machine: StateMachine
 var ship_id: String = UUID.v4()
@@ -15,8 +18,7 @@ var audio_hub: AudioHub
 func _ready() -> void:
 	audio_hub = get_node("/root/MainAudioHub")
 	ship_state_machine = find_child("StateMachine")
-
-	ship_area_2d = find_child("Area2D")
+	
 	ship_area_2d.body_entered.connect(on_player_enter)
 	ship_area_2d.body_exited.connect(on_player_exit)
 	
@@ -27,14 +29,14 @@ func on_player_enter(player_node: Node2D) -> void:
 	if not player_node.is_in_group("player"):
 		return
 	
-	ship_state_machine.request_state("StateShipActive")
+	ship_state_machine.fsm_context.context_memory['player_in_area'] = true
 
 
 func on_player_exit(player_node: Node2D) -> void:
 	if not player_node.is_in_group("player"):
 		return
 	
-	ship_state_machine.request_state("StateShipPassive")
+	ship_state_machine.fsm_context.context_memory['player_in_area'] = false
 
 
 func _process(_delta: float) -> void:
@@ -43,11 +45,17 @@ func _process(_delta: float) -> void:
 	
 	if ship_state_machine.fsm_context.get_value_bool("load_ship", false):
 		_load_next_ship()
+	
+	if ship_state_machine.fsm_context.get_value_bool("break", false):
+		_play_break()
+		
+	if ship_state_machine.fsm_context.get_value_bool("remove", false):
+		get_parent().remove_child(self)
+		queue_free()
 		
 		
 func _load_next_ship() -> void:
 	var does_save_exist = LevelLoader.does_level_exist(ship_id)
-	print(does_save_exist)
 	
 	if does_save_exist:
 		LevelLoader.set_level_as_current(ship_id)
@@ -91,3 +99,13 @@ func generate_level_data() -> LevelData:
 	level_data.ship_type = ship_type
 	
 	return level_data
+
+
+func _play_break() -> void:
+	ship_sprite_2d.visible = false
+	ship_particle_controller.trigger_particles()
+
+
+func mark_to_destroy() -> void:
+	ship_state_machine.request_state("StateShipBreak")
+	

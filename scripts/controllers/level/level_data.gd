@@ -10,3 +10,8 @@ class_name LevelData
 @export var parent_id: String
 @export var ship_type: String
 
+
+func clean_up_broken_ships() -> LevelData:
+	ships = ships.filter(func(x): return not x.is_bottle_broken)
+	
+	return self

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_sauvt"]
+[ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_4h7dr"]
+
+[sub_resource type="Resource" id="Resource_sauvt"]
+script = ExtResource("2_4h7dr")
+ship_position = Vector2(270, 184)
+ship_type = "ship_01"
+ship_id = "6d60d078-a94e-4b1c-8acb-1f4c434a3c09"
+
+[sub_resource type="Resource" id="Resource_4h7dr"]
+script = ExtResource("2_4h7dr")
+ship_position = Vector2(152, 87)
+ship_type = "ship_01"
+ship_id = "9b456c7f-152b-47c0-a43a-32afe87b6f20"
+
+[sub_resource type="Resource" id="Resource_woxch"]
+script = ExtResource("2_4h7dr")
+ship_position = Vector2(660, -89)
+ship_type = "ship_01"
+ship_id = "c03ffcb0-96d4-43d1-bafd-d691bee09c8c"
+
+[resource]
+script = ExtResource("1_sauvt")
+player_position = Vector2(193.66663, -0.074787535)
+ships = Array[ExtResource("2_4h7dr")]([SubResource("Resource_sauvt"), SubResource("Resource_4h7dr"), SubResource("Resource_woxch")])
+level_id = "fbcb7114-fabe-4ed1-b64b-b42ff68b7cfd"
+is_initialized = true
+parent_id = "root"
+ship_type = "ship_01"

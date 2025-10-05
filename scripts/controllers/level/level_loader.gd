@@ -43,7 +43,6 @@ static func _generate_save_directory_path() -> String:
 
 static func does_level_exist(level_id: String) -> bool:
 	var file_path: String = _generate_level_path(level_id)
-	print(file_path)
 	return ResourceLoader.exists(file_path)
 
 

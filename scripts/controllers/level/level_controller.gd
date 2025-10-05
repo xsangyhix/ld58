@@ -1,4 +1,4 @@
-﻿extends Node2D
+extends Node2D
 class_name LevelController
 
 
@@ -59,13 +59,19 @@ func _regenerate_assets(level_data: LevelData) -> void:
 		ship.queue_free()
 		
 	for ship_data in level_data.ships:
-		var packaged_ship_scene = PrefabLoader.load_bottled_ship(ship_data.ship_type)
-		var bottled_ship = packaged_ship_scene.instantiate()
+		var packaged_ship_scene: Resource = PrefabLoader.load_bottled_ship(ship_data.ship_type)
+		var bottled_ship: BottledShip = packaged_ship_scene.instantiate()
 		_objects.add_child(bottled_ship)
 		bottled_ship.position = ship_data.ship_position
 		bottled_ship.ship_id = ship_data.ship_id
+		
+		if ship_data.is_bottle_broken:
+			bottled_ship.mark_to_destroy()
 	
 	_assign_root_ids_to_ships()
+	
+	level_data.clean_up_broken_ships()
+	LevelLoader.save_level(level_data)
 
 func _assign_root_ids_to_ships() -> void:
 	for ship in _get_ships():
