@@ -17,8 +17,9 @@ func _ready() -> void:
 	ship_state_machine = find_child("StateMachine")
 
 	ship_area_2d = find_child("Area2D")
-	ship_area_2d.connect("body_entered", on_player_enter)
-	ship_area_2d.connect("body_exited", on_player_exit)
+	ship_area_2d.body_entered.connect(on_player_enter)
+	ship_area_2d.body_exited.connect(on_player_exit)
+	
 	
 	ship_ui_controller = find_child("ShipUIController")
 	

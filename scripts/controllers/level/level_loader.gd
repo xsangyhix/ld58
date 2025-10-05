@@ -33,10 +33,23 @@ static func _save(file_path: String, level_data: LevelData) -> void:
 	
 	
 static func _generate_level_path(level_id: String) -> String:
-	return "res://save/level_%s.tres" % [level_id]
+	var save_dir_path: String = _generate_save_directory_path()
+	return "{save_dir_path}/level_{level_id}.tres".format({"save_dir_path": save_dir_path, "level_id": level_id})
+	
+
+static func _generate_save_directory_path() -> String:
+	return "res://save/"
 
 
 static func does_level_exist(level_id: String) -> bool:
 	var file_path: String = _generate_level_path(level_id)
 	print(file_path)
 	return ResourceLoader.exists(file_path)
+
+
+static func remove_saved_files() -> void:
+	var save_directory: DirAccess = DirAccess.open(_generate_save_directory_path())
+	var save_files: PackedStringArray = save_directory.get_files()
+	
+	for file_path in save_files:
+		save_directory.remove(file_path)

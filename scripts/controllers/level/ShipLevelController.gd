@@ -22,15 +22,18 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit_ship"):
+		exit_to_parent()
+
+	
+func exit_to_parent() -> void:
 		serialize_level()
 		
-		
 		audio_hub.play_bottle_exit()
+		
 		var parent_level_data: LevelData = LevelLoader.load_level(parent_id)
 		LevelLoader.set_level_as_current(parent_level_data.level_id)
 		var parent_level_packed_scene = PrefabLoader.load_level(parent_level_data)
 		get_tree().change_scene_to_packed(parent_level_packed_scene)
-
 	
 	
 func serialize_level() -> void:

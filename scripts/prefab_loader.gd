@@ -16,7 +16,7 @@ static func load_bottled_ship(ship_type: String) -> Resource:
 
 static func load_level(level_data: LevelData) -> Resource:
 	if level_data.is_root:
-		return load("res://scenes/test_scene.tscn")
+		return load("res://scenes/root_scene.tscn")
 		
 	if level_data.ship_type == "ship_01":
 		return load_ship_01()

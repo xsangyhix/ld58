@@ -23,7 +23,20 @@ position = Vector2(205, 208)
 [node name="objects" type="Node" parent="."]
 
 [node name="Table" parent="objects" instance=ExtResource("3_nd71p")]
-position = Vector2(369, 239)
+position = Vector2(319, 239)
+
+[node name="Table2" parent="objects" instance=ExtResource("3_nd71p")]
+position = Vector2(457, 239)
+
+[node name="Table3" parent="objects" instance=ExtResource("3_nd71p")]
+position = Vector2(389, 239)
 
 [node name="BottledShip" parent="objects" instance=ExtResource("4_7ddre")]
-position = Vector2(368, 214)
+position = Vector2(318, 214)
+
+[node name="BottledShip2" parent="objects" instance=ExtResource("4_7ddre")]
+position = Vector2(389, 214)
+ship_type = "ship_02"
+
+[node name="BottledShip3" parent="objects" instance=ExtResource("4_7ddre")]
+position = Vector2(457, 214)
