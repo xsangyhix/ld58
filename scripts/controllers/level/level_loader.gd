@@ -25,10 +25,12 @@ static func set_level_as_current(level_id: String) -> void:
 	
 	
 static func _load(file_path: String) -> LevelData:
+	_check_or_create_save_directory()
 	return ResourceLoader.load(file_path)
 
 
 static func _save(file_path: String, level_data: LevelData) -> void:
+	_check_or_create_save_directory()
 	ResourceSaver.save(level_data, file_path)
 	
 	
@@ -42,10 +44,12 @@ static func _generate_player_path() -> String:
 
 	
 static func load_player() -> PlayerData:
+	_check_or_create_save_directory()
 	return ResourceLoader.load(_generate_player_path())
 	
 	
 static func save_player(player_data: PlayerData) -> void:
+	_check_or_create_save_directory()
 	ResourceSaver.save(player_data, _generate_player_path())
 	
 
@@ -62,8 +66,13 @@ static func does_player_exist() -> bool:
 	return ResourceLoader.exists(_generate_player_path())
 
 static func remove_saved_files() -> void:
+	_check_or_create_save_directory()
 	var save_directory: DirAccess = DirAccess.open(_generate_save_directory_path())
 	var save_files: PackedStringArray = save_directory.get_files()
 	
 	for file_path in save_files:
 		save_directory.remove(file_path)
+
+static func _check_or_create_save_directory() -> void:
+	if not DirAccess.dir_exists_absolute(_generate_save_directory_path()):
+			DirAccess.make_dir_absolute(_generate_save_directory_path())
