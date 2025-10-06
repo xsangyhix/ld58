@@ -17,4 +17,3 @@ func play_main_menu_music() -> void:
 func play_level_music() -> void:
 	stream = level_music
 	play()
-
