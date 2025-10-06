@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_bp74u"]
+[ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_h0rkh"]
+
+[resource]
+script = ExtResource("1_bp74u")
+level_id = "5591d0b0-04f4-4508-b3ff-ae56610f69fe"
+parent_id = "cae33124-dc44-4fd6-bb8f-aeb7aca8f3c9"
+ship_type = "ship_T3_01"
+ship_tier = "T3"
