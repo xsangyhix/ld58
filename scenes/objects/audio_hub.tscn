@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://10awsr3gl848"]
+[gd_scene load_steps=8 format=3 uid="uid://10awsr3gl848"]
 
 [ext_resource type="Script" uid="uid://621lgtfqd64t" path="res://scripts/controllers/audio/audio_hub.gd" id="1_s2lie"]
 [ext_resource type="AudioStream" uid="uid://c7cw3u434m8fd" path="res://audio/sfx/botttle_open.wav" id="2_tqpvg"]
 [ext_resource type="AudioStream" uid="uid://w1bsnalbu68c" path="res://audio/sfx/bottle_out.wav" id="3_k7yxl"]
 [ext_resource type="AudioStream" uid="uid://pqotsn2kvf76" path="res://audio/sfx/put_in_inventory.wav" id="4_tqpvg"]
+[ext_resource type="Script" uid="uid://ddimoj7dnansx" path="res://scripts/controllers/audio/music_player.gd" id="5_oyh55"]
+[ext_resource type="AudioStream" uid="uid://t8s5mowuc44j" path="res://audio/music/maze_in_a_bottle_title_music_loop.wav" id="6_07jit"]
+[ext_resource type="AudioStream" uid="uid://d31u3y6we8hx2" path="res://audio/music/lost_in_the_labyrinth_loop.wav" id="7_2slit"]
 
-[node name="AudioHub" type="AudioStreamPlayer2D"]
+[node name="AudioHub" type="AudioStreamPlayer2D" node_paths=PackedStringArray("music_player")]
+bus = &"SFX"
 script = ExtResource("1_s2lie")
+music_player = NodePath("MusicPlayer")
 bottle_open_sfx = ExtResource("2_tqpvg")
 bottle_exit_sfx = ExtResource("3_k7yxl")
 collect_bottle_sfx = ExtResource("4_tqpvg")
 metadata/_custom_type_script = "uid://621lgtfqd64t"
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"
+script = ExtResource("5_oyh55")
+main_menu_music = ExtResource("6_07jit")
+level_music = ExtResource("7_2slit")

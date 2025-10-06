@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_bp74u"]
+[ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_h0rkh"]
+
+[sub_resource type="Resource" id="Resource_jv3cp"]
+script = ExtResource("2_h0rkh")
+ship_position = Vector2(318, 214)
+ship_type = "ship_01"
+ship_tier = "T1"
+ship_id = "e2de48ea-ad0d-48ea-aacb-d95aebcfe6ff"
+is_bottle_broken = true
+
+[sub_resource type="Resource" id="Resource_wh0y6"]
+script = ExtResource("2_h0rkh")
+ship_position = Vector2(389, 214)
+ship_type = "ship_02"
+ship_tier = "T1"
+ship_id = "b5fc460e-1fa2-4f3b-a088-a6ee371d5c0d"
+
+[sub_resource type="Resource" id="Resource_dh2w4"]
+script = ExtResource("2_h0rkh")
+ship_position = Vector2(457, 214)
+ship_type = "ship_01"
+ship_tier = "T1"
+ship_id = "91123674-d946-4a98-af26-f43223ef2a16"
+
+[resource]
+script = ExtResource("1_bp74u")
+player_position = Vector2(300.9961, 222.97223)
+ships = Array[ExtResource("2_h0rkh")]([SubResource("Resource_jv3cp"), SubResource("Resource_wh0y6"), SubResource("Resource_dh2w4")])
+level_id = "root"
+is_root = true

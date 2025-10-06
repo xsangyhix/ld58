@@ -7,16 +7,19 @@ class_name MainMenuController
 func _ready() -> void:
 	menu_ui_controller.start_game_button.pressed.connect(start_new_game)
 	menu_ui_controller.continue_game_button.pressed.connect(resume_game)
+	MainAudioHub.play_main_menu_music()
 	
 
 
 func start_new_game() -> void:
 	LevelLoader.remove_saved_files()
 	_load_root_scene()
+	MainAudioHub.play_level_music()
 	
 	
 func resume_game() -> void:
 	_load_current_scene()
+	MainAudioHub.play_level_music()
 	
 func _generate_root_level_data() -> LevelData:
 	var level_data = LevelData.new()

@@ -15,9 +15,13 @@ func enter(_fsm_context: FsmContext) -> void:
 	_start_next_sound()
 	_recently_played = []
 	
+	GameEventBus.dialogue_finished_print.connect(_on_dialogue_end)
+	
 func exit(_fsm_context: FsmContext) -> void:
 	collector_audio_controller.finished.disconnect(_start_next_sound)
 	_recently_played = []
+	
+	GameEventBus.dialogue_finished_print.disconnect(_on_dialogue_end)
 
 func _start_next_sound() -> void:
 	await get_tree().create_timer(word_delay_sec).timeout
@@ -34,3 +38,6 @@ func _get_random_track() -> AudioStream:
 	var target_index = index_range.pick_random()
 	_recently_played.append(target_index)
 	return tracks[target_index]
+
+func _on_dialogue_end() -> void:
+	get_parent().request_state("StateCollectorIdle")

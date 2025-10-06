@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck7n88twxlt0n"]
+[gd_scene load_steps=8 format=3 uid="uid://ck7n88twxlt0n"]
 
 [ext_resource type="Texture2D" uid="uid://diuncaxhqhtou" path="res://sprites/player_character/player_character_01.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://er4s28323y1h" path="res://scripts/controllers/player/PlayerController.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://bqbfefmcvy3oq" path="res://scripts/controllers/player/player_ui_controller.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://bmioov7xahnx3" path="res://scripts/controllers/player/health_ui_controller.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://l1fsvjatweae" path="res://scripts/controllers/player/backpack_ui_controller.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://dueik17wgdcl4" path="res://scripts/controllers/player/dialogue_ui_controller.gd" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(4, 30)
@@ -36,7 +37,6 @@ position_smoothing_enabled = true
 layer = 10
 
 [node name="PlayerUi" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("health_controller", "backpack_controller")]
-visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -147,3 +147,48 @@ anchor_bottom = 1.0
 offset_right = 116.0
 grow_vertical = 2
 color = Color(0.4745098, 0.26666668, 0.2901961, 1)
+
+[node name="DialogUiController" type="Control" parent="CanvasLayer/PlayerUi" node_paths=PackedStringArray("dialogue_rtl", "dialogue_container")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -60.0
+offset_right = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("6_tuyoq")
+dialogue_rtl = NodePath("DialogContainer/RichTextLabel")
+dialogue_container = NodePath("DialogContainer")
+
+[node name="DialogContainer" type="Control" parent="CanvasLayer/PlayerUi/DialogUiController"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayerUi/DialogUiController/DialogContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5176471, 0.47058824, 0.45882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PlayerUi/DialogUiController/DialogContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "xxxxxx"
+scroll_active = false
+horizontal_alignment = 1
+drag_and_drop_selection_enabled = false
