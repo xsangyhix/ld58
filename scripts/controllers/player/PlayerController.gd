@@ -40,9 +40,11 @@ func _physics_process(delta: float) -> void:
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and _can_jump():
 		velocity.y = jump_velocity
+		MainAudioHub.play_jump()
 		_time_airborne += coyote_time
 	elif Input.is_action_just_pressed("jump") and _can_double_jump():
 		velocity.y = jump_velocity
+		MainAudioHub.play_jump()
 		_used_double_jump = true
 		
 	
