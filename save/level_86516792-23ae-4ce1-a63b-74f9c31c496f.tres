@@ -1,48 +1,40 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=8 format=3]
+[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_bp74u"]
-[ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_h0rkh"]
+[ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_ii5w4"]
+[ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_gct4a"]
 
 [sub_resource type="Resource" id="Resource_ii5w4"]
-script = ExtResource("2_h0rkh")
+script = ExtResource("2_gct4a")
 ship_position = Vector2(660, -89)
 ship_type = "ship_01"
 ship_tier = "T1"
 ship_id = "bf2aacbf-8747-42e4-991b-5577823941e4"
 
 [sub_resource type="Resource" id="Resource_gct4a"]
-script = ExtResource("2_h0rkh")
+script = ExtResource("2_gct4a")
 ship_position = Vector2(152, 87)
 ship_type = "random"
 ship_tier = "T3"
 ship_id = "54e78a8f-4ede-486a-a2ff-40a850f9260c"
 
 [sub_resource type="Resource" id="Resource_xeokp"]
-script = ExtResource("2_h0rkh")
+script = ExtResource("2_gct4a")
 ship_position = Vector2(774, 55)
 ship_type = "random"
 ship_tier = "T2"
 ship_id = "32f728bc-d6f1-4cd3-9cea-408b5f948d9f"
 
-[sub_resource type="Resource" id="Resource_pbsgh"]
-script = ExtResource("2_h0rkh")
-ship_position = Vector2(228, 183)
-ship_type = "random"
-ship_tier = "T3"
-ship_id = "ef594fb1-e160-4ad1-9025-e0c44baad505"
-is_bottle_broken = true
-
 [sub_resource type="Resource" id="Resource_ib8wc"]
-script = ExtResource("2_h0rkh")
+script = ExtResource("2_gct4a")
 ship_position = Vector2(1239, -136)
 ship_type = "random"
 ship_tier = "T2"
 ship_id = "9d0e9f7e-f0c8-49d1-b60e-c387ed04b2d3"
 
 [resource]
-script = ExtResource("1_bp74u")
+script = ExtResource("1_ii5w4")
 player_position = Vector2(240.38092, 172.92522)
-ships = Array[ExtResource("2_h0rkh")]([SubResource("Resource_ii5w4"), SubResource("Resource_gct4a"), SubResource("Resource_xeokp"), SubResource("Resource_pbsgh"), SubResource("Resource_ib8wc")])
+ships = Array[ExtResource("2_gct4a")]([SubResource("Resource_ii5w4"), SubResource("Resource_gct4a"), SubResource("Resource_xeokp"), SubResource("Resource_ib8wc")])
 level_id = "86516792-23ae-4ce1-a63b-74f9c31c496f"
 is_initialized = true
 parent_id = "072e536b-5818-40c6-909a-45aec0bd03c0"

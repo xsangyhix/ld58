@@ -24,6 +24,7 @@ var _collected_ships: Array[ShipData] = []
 
 
 func _ready() -> void:
+	_ui_controller.visible = true
 	_audio_hub = get_node("/root/MainAudioHub")
 	deserialize_player()
 
