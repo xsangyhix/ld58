@@ -31,6 +31,8 @@ func _ready() -> void:
 		if child_node is State:
 			states[child_node.name] = child_node
 			
+	current_state.enter(fsm_context)
+			
 
 
 func _process(_delta: float) -> void:

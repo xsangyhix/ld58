@@ -1,0 +1,150 @@
+[gd_scene load_steps=37 format=3 uid="uid://idd0e2uuqsaw"]
+
+[ext_resource type="Script" uid="uid://cobs5sj0vnduh" path="res://scripts/controllers/the_collector/CollectorController.gd" id="1_xmemu"]
+[ext_resource type="Texture2D" uid="uid://dwdwnfyx5sjmb" path="res://sprites/objects/the_grand_collector_v3_idle.png" id="2_ak6wv"]
+[ext_resource type="Texture2D" uid="uid://3858ks5lnt46" path="res://sprites/objects/the_grand_collector_v3_talking.png" id="3_ak6wv"]
+[ext_resource type="Script" uid="uid://bg3e2yt8anoa6" path="res://scripts/controllers/the_collector/CollectorAudioController.gd" id="4_t1dhi"]
+[ext_resource type="AudioStream" uid="uid://cebxm31ckihqf" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_01.wav" id="5_dg6i2"]
+[ext_resource type="AudioStream" uid="uid://cfxuvmg8pjofy" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_02.wav" id="6_p0wy5"]
+[ext_resource type="AudioStream" uid="uid://bh1vhwa88hqol" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_03.wav" id="7_k653m"]
+[ext_resource type="AudioStream" uid="uid://5ctno6stfsao" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_04.wav" id="8_q42xj"]
+[ext_resource type="AudioStream" uid="uid://60j8x14thihu" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_05.wav" id="9_8he5x"]
+[ext_resource type="AudioStream" uid="uid://b6xrik6ye6fiu" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_06.wav" id="10_ml2x4"]
+[ext_resource type="AudioStream" uid="uid://c1wxwt876ma7u" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_07.wav" id="11_hy4vi"]
+[ext_resource type="AudioStream" uid="uid://c77j00d74tpo" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_08.wav" id="12_4fx0i"]
+[ext_resource type="AudioStream" uid="uid://o15b4nobx6a1" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_09.wav" id="13_echox"]
+[ext_resource type="AudioStream" uid="uid://ofapr5outbj6" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_10.wav" id="14_uttfv"]
+[ext_resource type="AudioStream" uid="uid://bnvxmdvh7e140" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_11.wav" id="15_h2xjx"]
+[ext_resource type="AudioStream" uid="uid://dicdnci3qbr2a" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_12.wav" id="16_w5h80"]
+[ext_resource type="AudioStream" uid="uid://wvwsh253c360" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_13.wav" id="17_tmgvr"]
+[ext_resource type="AudioStream" uid="uid://cexdlei6afb46" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_14.wav" id="18_tjvcv"]
+[ext_resource type="AudioStream" uid="uid://ghj8h4lalo76" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_15.wav" id="19_j7px2"]
+[ext_resource type="AudioStream" uid="uid://pmdk8d8hk1jv" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_16.wav" id="20_i4ihe"]
+[ext_resource type="Script" uid="uid://by1s7vmqc7ssu" path="res://scripts/fsm/state_machine.gd" id="21_w66tu"]
+[ext_resource type="Script" uid="uid://sce3u2tvfse3" path="res://scripts/controllers/the_collector/fsm/state_collector_idle.gd" id="22_csypd"]
+[ext_resource type="Script" uid="uid://besf3pmfqy2iw" path="res://scripts/controllers/the_collector/fsm/state_collector_talking.gd" id="23_4lvk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1dhi"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al4w3"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psy2a"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbifd"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dkc"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd5cn"]
+atlas = ExtResource("2_ak6wv")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf1ih"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d6ph"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5bm6"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dacia"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofijw"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0aba"]
+atlas = ExtResource("3_ak6wv")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xf1ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1dhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al4w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psy2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbifd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd5cn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf1ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d6ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5bm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dacia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofijw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0aba")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}]
+
+[node name="TheCollector" type="Node2D" node_paths=PackedStringArray("audio_controller", "collector_state_machine")]
+script = ExtResource("1_xmemu")
+audio_controller = NodePath("CollectorSpeechAudio")
+collector_state_machine = NodePath("StateMachine")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xf1ih")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollectorSpeechAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_t1dhi")
+collector_voice_array = Array[AudioStream]([ExtResource("5_dg6i2"), ExtResource("6_p0wy5"), ExtResource("7_k653m"), ExtResource("8_q42xj"), ExtResource("9_8he5x"), ExtResource("10_ml2x4"), ExtResource("11_hy4vi"), ExtResource("12_4fx0i"), ExtResource("13_echox"), ExtResource("14_uttfv"), ExtResource("15_h2xjx"), ExtResource("16_w5h80"), ExtResource("17_tmgvr"), ExtResource("18_tjvcv"), ExtResource("19_j7px2"), ExtResource("20_i4ihe")])
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("21_w66tu")
+initial_state = NodePath("StateCollectorTalking")
+metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
+
+[node name="StateCollectorIdle" type="Node" parent="StateMachine"]
+script = ExtResource("22_csypd")
+metadata/_custom_type_script = "uid://sce3u2tvfse3"
+
+[node name="StateCollectorTalking" type="Node" parent="StateMachine" node_paths=PackedStringArray("collector_audio_controller")]
+script = ExtResource("23_4lvk3")
+collector_audio_controller = NodePath("../../CollectorSpeechAudio")
+metadata/_custom_type_script = "uid://besf3pmfqy2iw"
