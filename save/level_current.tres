@@ -3,31 +3,30 @@
 [ext_resource type="Script" path="res://scripts/controllers/level/level_data.gd" id="1_bp74u"]
 [ext_resource type="Script" path="res://scripts/controllers/ship/ship_data.gd" id="2_h0rkh"]
 
-[sub_resource type="Resource" id="Resource_jv3cp"]
+[sub_resource type="Resource" id="Resource_kq3pa"]
 script = ExtResource("2_h0rkh")
 ship_position = Vector2(318, 214)
 ship_type = "ship_01"
 ship_tier = "T1"
-ship_id = "e2de48ea-ad0d-48ea-aacb-d95aebcfe6ff"
-is_bottle_broken = true
+ship_id = "a1c03f5a-2a98-4466-90b9-5381daf2c686"
 
-[sub_resource type="Resource" id="Resource_wh0y6"]
+[sub_resource type="Resource" id="Resource_7b3g1"]
 script = ExtResource("2_h0rkh")
 ship_position = Vector2(389, 214)
 ship_type = "ship_02"
 ship_tier = "T1"
-ship_id = "b5fc460e-1fa2-4f3b-a088-a6ee371d5c0d"
+ship_id = "7cf2dcc9-de21-4237-8d10-a27574b1fbd4"
 
-[sub_resource type="Resource" id="Resource_dh2w4"]
+[sub_resource type="Resource" id="Resource_jv3cp"]
 script = ExtResource("2_h0rkh")
 ship_position = Vector2(457, 214)
 ship_type = "ship_01"
 ship_tier = "T1"
-ship_id = "91123674-d946-4a98-af26-f43223ef2a16"
+ship_id = "73293283-24fd-4808-8aac-d83dbe8808d2"
 
 [resource]
 script = ExtResource("1_bp74u")
-player_position = Vector2(300.9961, 222.97223)
-ships = Array[ExtResource("2_h0rkh")]([SubResource("Resource_jv3cp"), SubResource("Resource_wh0y6"), SubResource("Resource_dh2w4")])
+player_position = Vector2(300.9252, 222.92525)
+ships = Array[ExtResource("2_h0rkh")]([SubResource("Resource_kq3pa"), SubResource("Resource_7b3g1"), SubResource("Resource_jv3cp")])
 level_id = "root"
 is_root = true
