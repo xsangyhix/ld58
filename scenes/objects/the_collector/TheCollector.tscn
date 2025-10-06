@@ -159,6 +159,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollectorSpeechAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 4.039
 bus = &"Dialogue"
 script = ExtResource("4_t1dhi")
 collector_voice_array = Array[AudioStream]([ExtResource("5_dg6i2"), ExtResource("6_p0wy5"), ExtResource("7_k653m"), ExtResource("8_q42xj"), ExtResource("9_8he5x"), ExtResource("10_ml2x4"), ExtResource("11_hy4vi"), ExtResource("12_4fx0i"), ExtResource("13_echox"), ExtResource("14_uttfv"), ExtResource("15_h2xjx"), ExtResource("16_w5h80"), ExtResource("17_tmgvr"), ExtResource("18_tjvcv"), ExtResource("19_j7px2"), ExtResource("20_i4ihe")])
