@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://dn20ja4j78ejk"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_tf2fh"]
+
+[resource]
+script = ExtResource("1_tf2fh")
+text = "How cute! He thinks he can win over my might!"
+metadata/_custom_type_script = "uid://brthyujn2muag"

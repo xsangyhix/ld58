@@ -54,7 +54,7 @@ static func save_player(player_data: PlayerData) -> void:
 	
 
 static func _generate_save_directory_path() -> String:
-	return "res://save/"
+	return "user://save/"
 
 
 static func does_level_exist(level_id: String) -> bool:

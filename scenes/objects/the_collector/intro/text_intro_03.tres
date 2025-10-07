@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://dhrcga8657up1"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_r1fqj"]
+
+[resource]
+script = ExtResource("1_r1fqj")
+text = "100 bottled ships from my collection."
+text_on_screen_delay = 5.0
+metadata/_custom_type_script = "uid://brthyujn2muag"

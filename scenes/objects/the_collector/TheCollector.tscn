@@ -1,54 +1,46 @@
-[gd_scene load_steps=43 format=3 uid="uid://idd0e2uuqsaw"]
+[gd_scene load_steps=55 format=3 uid="uid://idd0e2uuqsaw"]
 
 [ext_resource type="Script" uid="uid://cobs5sj0vnduh" path="res://scripts/controllers/the_collector/CollectorController.gd" id="1_xmemu"]
 [ext_resource type="Texture2D" uid="uid://dwdwnfyx5sjmb" path="res://sprites/objects/the_grand_collector_v3_idle.png" id="2_ak6wv"]
 [ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="2_p0wy5"]
 [ext_resource type="Texture2D" uid="uid://3858ks5lnt46" path="res://sprites/objects/the_grand_collector_v3_talking.png" id="3_ak6wv"]
+[ext_resource type="Resource" uid="uid://cl6x7alft2brg" path="res://scenes/objects/the_collector/greeting/greeting_01.tres" id="3_csypd"]
+[ext_resource type="Resource" uid="uid://c7cpvchyfcbk6" path="res://scenes/objects/the_collector/greeting/greeting_02.tres" id="4_4lvk3"]
 [ext_resource type="Script" uid="uid://bg3e2yt8anoa6" path="res://scripts/controllers/the_collector/CollectorAudioController.gd" id="4_t1dhi"]
 [ext_resource type="AudioStream" uid="uid://cebxm31ckihqf" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_01.wav" id="5_dg6i2"]
+[ext_resource type="Resource" uid="uid://dejt74orfkx2m" path="res://scenes/objects/the_collector/greeting/greeting_03.tres" id="5_rd6b4"]
+[ext_resource type="Resource" uid="uid://p0rdwn1s0uyd" path="res://scenes/objects/the_collector/greeting/greeting_04.tres" id="6_2ak0a"]
 [ext_resource type="AudioStream" uid="uid://cfxuvmg8pjofy" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_02.wav" id="6_p0wy5"]
+[ext_resource type="Resource" uid="uid://v8sr1x8rg7ww" path="res://scenes/objects/the_collector/greeting/greeting_05.tres" id="7_53ksb"]
 [ext_resource type="AudioStream" uid="uid://bh1vhwa88hqol" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_03.wav" id="7_k653m"]
+[ext_resource type="Resource" uid="uid://dn20ja4j78ejk" path="res://scenes/objects/the_collector/taunt/taunt_01.tres" id="8_o68yj"]
 [ext_resource type="AudioStream" uid="uid://5ctno6stfsao" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_04.wav" id="8_q42xj"]
 [ext_resource type="AudioStream" uid="uid://60j8x14thihu" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_05.wav" id="9_8he5x"]
+[ext_resource type="Resource" uid="uid://cxbq5p0061h68" path="res://scenes/objects/the_collector/taunt/taunt_02.tres" id="9_onbvl"]
+[ext_resource type="Resource" uid="uid://d0188tvetic3e" path="res://scenes/objects/the_collector/taunt/taunt_03.tres" id="10_dspx2"]
 [ext_resource type="AudioStream" uid="uid://b6xrik6ye6fiu" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_06.wav" id="10_ml2x4"]
 [ext_resource type="AudioStream" uid="uid://c1wxwt876ma7u" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_07.wav" id="11_hy4vi"]
+[ext_resource type="Resource" uid="uid://gqhuu5jnh56v" path="res://scenes/objects/the_collector/taunt/taunt_04.tres" id="11_vh7k6"]
 [ext_resource type="AudioStream" uid="uid://c77j00d74tpo" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_08.wav" id="12_4fx0i"]
+[ext_resource type="Resource" uid="uid://dd63w26uiynbk" path="res://scenes/objects/the_collector/taunt/taunt_05.tres" id="12_nyttt"]
 [ext_resource type="AudioStream" uid="uid://o15b4nobx6a1" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_09.wav" id="13_echox"]
+[ext_resource type="Resource" uid="uid://774xbepr1wxt" path="res://scenes/objects/the_collector/taunt/taunt_06.tres" id="13_iou5x"]
+[ext_resource type="Resource" uid="uid://bkyvrde5i22jx" path="res://scenes/objects/the_collector/taunt/taunt_07.tres" id="14_fq02y"]
 [ext_resource type="AudioStream" uid="uid://ofapr5outbj6" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_10.wav" id="14_uttfv"]
 [ext_resource type="AudioStream" uid="uid://bnvxmdvh7e140" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_11.wav" id="15_h2xjx"]
+[ext_resource type="Resource" uid="uid://cf576faqdgas" path="res://scenes/objects/the_collector/intro/text_intro_01.tres" id="15_qhi0u"]
+[ext_resource type="Resource" uid="uid://ryjy471idnpg" path="res://scenes/objects/the_collector/intro/text_intro_02.tres" id="16_afsfw"]
 [ext_resource type="AudioStream" uid="uid://dicdnci3qbr2a" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_12.wav" id="16_w5h80"]
+[ext_resource type="Resource" uid="uid://dhrcga8657up1" path="res://scenes/objects/the_collector/intro/text_intro_03.tres" id="17_puksf"]
 [ext_resource type="AudioStream" uid="uid://wvwsh253c360" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_13.wav" id="17_tmgvr"]
+[ext_resource type="Resource" uid="uid://cdq0jm2abuqso" path="res://scenes/objects/the_collector/intro/text_intro_04.tres" id="18_4lvk3"]
+[ext_resource type="Resource" uid="uid://cvdkhc71lq3o5" path="res://scenes/objects/the_collector/game_end/game_end_01.tres" id="18_qju4m"]
 [ext_resource type="AudioStream" uid="uid://cexdlei6afb46" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_14.wav" id="18_tjvcv"]
 [ext_resource type="AudioStream" uid="uid://ghj8h4lalo76" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_15.wav" id="19_j7px2"]
 [ext_resource type="AudioStream" uid="uid://pmdk8d8hk1jv" path="res://audio/sfx/collector_speech/the_grand_collector_sounds_16.wav" id="20_i4ihe"]
 [ext_resource type="Script" uid="uid://by1s7vmqc7ssu" path="res://scripts/fsm/state_machine.gd" id="21_w66tu"]
 [ext_resource type="Script" uid="uid://sce3u2tvfse3" path="res://scripts/controllers/the_collector/fsm/state_collector_idle.gd" id="22_csypd"]
 [ext_resource type="Script" uid="uid://besf3pmfqy2iw" path="res://scripts/controllers/the_collector/fsm/state_collector_talking.gd" id="23_4lvk3"]
-
-[sub_resource type="Resource" id="Resource_k653m"]
-script = ExtResource("2_p0wy5")
-text = "Hello"
-metadata/_custom_type_script = "uid://brthyujn2muag"
-
-[sub_resource type="Resource" id="Resource_p0wy5"]
-script = ExtResource("2_p0wy5")
-text = "There you are."
-metadata/_custom_type_script = "uid://brthyujn2muag"
-
-[sub_resource type="Resource" id="Resource_q42xj"]
-script = ExtResource("2_p0wy5")
-text = "."
-metadata/_custom_type_script = "uid://brthyujn2muag"
-
-[sub_resource type="Resource" id="Resource_8he5x"]
-script = ExtResource("2_p0wy5")
-text = "Found anything?"
-metadata/_custom_type_script = "uid://brthyujn2muag"
-
-[sub_resource type="Resource" id="Resource_ml2x4"]
-script = ExtResource("2_p0wy5")
-text = "Hello Klaus."
-metadata/_custom_type_script = "uid://brthyujn2muag"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1dhi"]
 atlas = ExtResource("2_ak6wv")
@@ -151,7 +143,10 @@ animations = [{
 script = ExtResource("1_xmemu")
 audio_controller = NodePath("CollectorSpeechAudio")
 collector_state_machine = NodePath("StateMachine")
-text_greetings = Array[ExtResource("2_p0wy5")]([SubResource("Resource_k653m"), SubResource("Resource_p0wy5"), SubResource("Resource_q42xj"), SubResource("Resource_8he5x"), SubResource("Resource_ml2x4")])
+text_greetings = Array[ExtResource("2_p0wy5")]([ExtResource("3_csypd"), ExtResource("4_4lvk3"), ExtResource("5_rd6b4"), ExtResource("6_2ak0a"), ExtResource("7_53ksb")])
+text_taunt = Array[ExtResource("2_p0wy5")]([ExtResource("8_o68yj"), ExtResource("9_onbvl"), ExtResource("10_dspx2"), ExtResource("11_vh7k6"), ExtResource("12_nyttt"), ExtResource("13_iou5x"), ExtResource("14_fq02y")])
+text_intro = Array[ExtResource("2_p0wy5")]([ExtResource("15_qhi0u"), ExtResource("16_afsfw"), ExtResource("17_puksf"), ExtResource("18_4lvk3")])
+text_end_game = ExtResource("18_qju4m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xf1ih")
@@ -169,11 +164,13 @@ script = ExtResource("21_w66tu")
 initial_state = NodePath("StateCollectorTalking")
 metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
 
-[node name="StateCollectorIdle" type="Node" parent="StateMachine"]
+[node name="StateCollectorIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("22_csypd")
+animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://sce3u2tvfse3"
 
-[node name="StateCollectorTalking" type="Node" parent="StateMachine" node_paths=PackedStringArray("collector_audio_controller")]
+[node name="StateCollectorTalking" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "collector_audio_controller")]
 script = ExtResource("23_4lvk3")
+animated_sprite = NodePath("../../AnimatedSprite2D")
 collector_audio_controller = NodePath("../../CollectorSpeechAudio")
 metadata/_custom_type_script = "uid://besf3pmfqy2iw"

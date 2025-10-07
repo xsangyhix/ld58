@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://c7cpvchyfcbk6"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_tr12d"]
+
+[resource]
+script = ExtResource("1_tr12d")
+text = "There you are."
+metadata/_custom_type_script = "uid://brthyujn2muag"

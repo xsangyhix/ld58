@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://774xbepr1wxt"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_2yukr"]
+
+[resource]
+script = ExtResource("1_2yukr")
+text = "I’m pretty sure I’ve seen hamsters do better than you!"
+metadata/_custom_type_script = "uid://brthyujn2muag"

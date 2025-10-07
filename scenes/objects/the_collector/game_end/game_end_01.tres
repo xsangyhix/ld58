@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://cvdkhc71lq3o5"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_lg0ql"]
+
+[resource]
+script = ExtResource("1_lg0ql")
+text = "I'm impressed. Now be gone!"
+print_speed_c_per_s = 25.0
+text_on_screen_delay = 5.0
+metadata/_custom_type_script = "uid://brthyujn2muag"

@@ -2,6 +2,7 @@ extends State
 class_name StateCollectorTalking
 
 
+@export var animated_sprite: AnimatedSprite2D
 @export var collector_audio_controller: CollectorAudioController
 @export var word_delay_sec: float = 0.1
 @export var repeat_limit: int = 3
@@ -16,6 +17,7 @@ func enter(_fsm_context: FsmContext) -> void:
 	_recently_played = []
 	
 	GameEventBus.dialogue_finished_print.connect(_on_dialogue_end)
+	animated_sprite.set_animation("talking")
 	
 func exit(_fsm_context: FsmContext) -> void:
 	collector_audio_controller.finished.disconnect(_start_next_sound)

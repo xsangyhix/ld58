@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://cxbq5p0061h68"]
+
+[ext_resource type="Script" uid="uid://brthyujn2muag" path="res://scripts/controllers/dialogue/dialogue_resource.gd" id="1_pn50r"]
+
+[resource]
+script = ExtResource("1_pn50r")
+text = "Goblins are such lowly creatures. They’re perfect to be the living parts of my grand menagerie!"
+metadata/_custom_type_script = "uid://brthyujn2muag"

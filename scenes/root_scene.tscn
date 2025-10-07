@@ -22,7 +22,7 @@ tile_set = ExtResource("1_j8ivh")
 position = Vector2(157, 215)
 
 [node name="Player" parent="." instance=ExtResource("2_j8ivh")]
-position = Vector2(205, 208)
+position = Vector2(205, 220)
 
 [node name="objects" type="Node" parent="."]
 

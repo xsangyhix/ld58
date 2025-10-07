@@ -1,4 +1,4 @@
-﻿extends AudioStreamPlayer2D
+extends AudioStreamPlayer2D
 class_name AudioHub
 
 @export var music_player: MusicPlayer
@@ -52,9 +52,8 @@ func play_level_music() -> void:
 func _play_temp_sfx(sfx: AudioStream) -> void:
 	if sfx == null:
 		return
-	var p := AudioStreamPlayer2D.new()
+	var p := AudioStreamPlayer.new()
 	p.stream = sfx
-	p.global_position = global_position
 	p.bus = bus
 	add_child(p)
 	p.finished.connect(p.queue_free)

@@ -3,13 +3,19 @@ class_name RootLevelController
 
 
 
-func _ready() -> void:		
-	var root_level_data: LevelData = LevelLoader.load_level("root")
-	
+func _ready() -> void:
 	if LevelLoader.does_level_exist("root"):
+		var root_level_data: LevelData = LevelLoader.load_level("root")
 		_regenerate_assets(root_level_data)
 	
 	_assign_root_ids_to_ships()
+	
+	serialize_level()
+	LevelLoader.set_level_as_current("root")
+	
+	var player: PlayerController = _get_player()
+	player.times_entered_root += 1
+	GameEventBus.player_entered_root.emit(player)
 
 func get_level_id() -> String:
 	return "root"

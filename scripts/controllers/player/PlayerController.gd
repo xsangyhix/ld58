@@ -10,22 +10,28 @@ class_name PlayerController
 
 
 @export var _ui_controller: PlayerUiController
-@export var _player_sprite: Sprite2D
+@export var _player_sprite: AnimatedSprite2D
+@export var _is_title_screen: bool = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var moving_right: bool = true
-var _audio_hub: AudioHub
 var _time_airborne: float
-var _used_double_jump = false
+var _used_double_jump: bool = false
+var _was_on_floor: bool = true
+
 
 var _collected_ships: Array[ShipData] = []
+var times_entered_root: int = 0
 
 
 func _ready() -> void:
 	_ui_controller.visible = true
-	_audio_hub = get_node("/root/MainAudioHub")
+	if _is_title_screen:
+		_ui_controller.backpack_controller.visible = false
+		_ui_controller.health_controller.visible = false
+		return
 	deserialize_player()
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +42,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		_time_airborne = 0
 		_used_double_jump = false
-
+	
+	if _is_title_screen: return
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and _can_jump():
 		velocity.y = jump_velocity
@@ -61,9 +69,18 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, floor_drag * delta)
 
 	move_and_slide()
+	
+	if not _was_on_floor and is_on_floor():
+		MainAudioHub.play_land()
+	
+	_was_on_floor = is_on_floor()
 
 
 func _process(_delta: float) -> void:
+	if _is_title_screen:
+		velocity = Vector2.ZERO
+		return
+	
 	var input_direction: float = Input.get_axis("ui_left", "ui_right")
 	
 	if moving_right and input_direction < 0:
@@ -84,12 +101,14 @@ func deserialize_player() -> void:
 	_ui_controller.set_player_hp(player_data.player_hp)
 	_collected_ships = player_data.collected_ships
 	_ui_controller.set_ship_count(_collected_ships.size())
+	times_entered_root = player_data.times_entered_root
 
 func serialize_player() -> void:
 	var player_data: PlayerData = PlayerData.new()
 	
 	player_data.player_hp = _ui_controller.get_player_hp()
 	player_data.collected_ships = _collected_ships
+	player_data.times_entered_root = times_entered_root
 	
 	LevelLoader.save_player(player_data)
 
@@ -97,7 +116,7 @@ func serialize_player() -> void:
 func collect_ship(ship_data: ShipData) -> void:
 	_collected_ships.append(ship_data)
 	_ui_controller.add_ship()
-	_audio_hub.play_collect_bottle()
+	MainAudioHub.play_collect_bottle()
 
 
 func deal_damage(damage_points: int) -> void:
