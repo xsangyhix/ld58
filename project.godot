@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+RootUi="*res://scenes/ui/root_ui.tscn"
 MainAudioHub="*res://scenes/objects/audio_hub.tscn"
 GameEventBus="*res://scripts/bus/event_bus.gd"
 

@@ -5,11 +5,10 @@ class_name ShipLevelController
 
 var parent_id: String
 var ship_type: String
-var audio_hub: AudioHub
 var ship_tier: String
 
 func _ready() -> void:
-	audio_hub = get_node("/root/MainAudioHub")
+	GameEventBus.scene_started.emit(GameEnums.scene_type.SHIP_SCENE)
 	var level_data: LevelData = LevelLoader.load_current_level()
 	
 	if level_data.is_initialized:
@@ -29,7 +28,7 @@ func _input(event: InputEvent) -> void:
 func exit_to_parent() -> void:
 	serialize_level()
 	
-	audio_hub.play_bottle_exit()
+	MainAudioHub.play_bottle_exit()
 	
 	var parent_level_data: LevelData = LevelLoader.load_level(parent_id)
 	LevelLoader.set_level_as_current(parent_level_data.level_id)
@@ -78,6 +77,7 @@ func _generate_level_data() -> LevelData:
 	
 	for ship in _get_ships():
 		if not ship is BottledShip: continue
+		if ship.is_marked_to_destroy(): continue
 		
 		ships.append(ship.generate_ship_data())	
 	

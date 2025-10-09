@@ -9,7 +9,6 @@ class_name PlayerController
 @export var coyote_time: float = 0.5
 
 
-@export var _ui_controller: PlayerUiController
 @export var _player_sprite: AnimatedSprite2D
 @export var _is_title_screen: bool = false
 
@@ -27,11 +26,6 @@ var times_entered_root: int = 0
 
 
 func _ready() -> void:
-	_ui_controller.visible = true
-	if _is_title_screen:
-		_ui_controller.backpack_controller.visible = false
-		_ui_controller.health_controller.visible = false
-		return
 	deserialize_player()
 
 func _physics_process(delta: float) -> void:
@@ -98,15 +92,15 @@ func deserialize_player() -> void:
 
 	var player_data: PlayerData = LevelLoader.load_player()
 	
-	_ui_controller.set_player_hp(player_data.player_hp)
+	RootUi.player_ui_controller.set_player_hp(player_data.player_hp)
 	_collected_ships = player_data.collected_ships
-	_ui_controller.set_ship_count(_collected_ships.size())
+	RootUi.player_ui_controller.set_ship_count(_collected_ships.size())
 	times_entered_root = player_data.times_entered_root
 
 func serialize_player() -> void:
 	var player_data: PlayerData = PlayerData.new()
 	
-	player_data.player_hp = _ui_controller.get_player_hp()
+	player_data.player_hp = RootUi.player_ui_controller.get_player_hp()
 	player_data.collected_ships = _collected_ships
 	player_data.times_entered_root = times_entered_root
 	
@@ -115,12 +109,12 @@ func serialize_player() -> void:
 
 func collect_ship(ship_data: ShipData) -> void:
 	_collected_ships.append(ship_data)
-	_ui_controller.add_ship()
+	RootUi.player_ui_controller.add_ship()
 	MainAudioHub.play_collect_bottle()
 
 
 func deal_damage(damage_points: int) -> void:
-	_ui_controller.remove_player_hp(damage_points)
+	RootUi.player_ui_controller.remove_player_hp(damage_points)
 
 
 func _can_jump() -> bool:

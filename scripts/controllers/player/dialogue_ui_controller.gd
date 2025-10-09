@@ -8,7 +8,7 @@ class_name DialogueUiController
 
 var _playback_speed: float
 var _visible_characters: float = 0
-var _is_printing = false
+var _is_printing: bool = false
 var _timeout_timer: SceneTreeTimer
 var _hide_box_delay: float = 0
 var _queue: Array[DialogueResource] = []

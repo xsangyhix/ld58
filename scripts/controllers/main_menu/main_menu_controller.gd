@@ -2,13 +2,13 @@ extends Node2D
 class_name MainMenuController
 
 
-@export var menu_ui_controller: MenuUiController
 
 func _ready() -> void:
-	menu_ui_controller.start_game_button.pressed.connect(start_new_game)
-	menu_ui_controller.continue_game_button.pressed.connect(resume_game)
-	menu_ui_controller.start_game_button.mouse_entered.connect(_on_button_hover)
-	menu_ui_controller.continue_game_button.mouse_entered.connect(_on_button_hover)
+	GameEventBus.scene_started.emit(GameEnums.scene_type.MAIN_MENU)
+	RootUi.menu_ui_controller.start_game_button.pressed.connect(start_new_game)
+	RootUi.menu_ui_controller.continue_game_button.pressed.connect(resume_game)
+	RootUi.menu_ui_controller.start_game_button.mouse_entered.connect(_on_button_hover)
+	RootUi.menu_ui_controller.continue_game_button.mouse_entered.connect(_on_button_hover)
 	MainAudioHub.play_main_menu_music()
 	
 

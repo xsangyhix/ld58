@@ -1,0 +1,215 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6xb170h1vkh4"]
+
+[ext_resource type="Script" uid="uid://bqbfefmcvy3oq" path="res://scripts/controllers/player/player_ui_controller.gd" id="1_ci3n1"]
+[ext_resource type="Script" uid="uid://b371dtw8a8ejp" path="res://scripts/controllers/ui/root_ui_controller.gd" id="1_f3p0y"]
+[ext_resource type="Script" uid="uid://l1fsvjatweae" path="res://scripts/controllers/player/backpack_ui_controller.gd" id="2_f3p0y"]
+[ext_resource type="Script" uid="uid://bmioov7xahnx3" path="res://scripts/controllers/player/health_ui_controller.gd" id="3_mug08"]
+[ext_resource type="Script" uid="uid://dueik17wgdcl4" path="res://scripts/controllers/player/dialogue_ui_controller.gd" id="4_1w1lr"]
+[ext_resource type="Script" uid="uid://dbft5y0cmyvrg" path="res://scripts/controllers/main_menu/menu_ui_controller.gd" id="6_mug08"]
+
+[node name="RootUi" type="CanvasLayer" node_paths=PackedStringArray("player_ui_controller", "dialogue_ui_controller", "menu_ui_controller")]
+script = ExtResource("1_f3p0y")
+player_ui_controller = NodePath("RootUiNode/PlayerUiController")
+dialogue_ui_controller = NodePath("RootUiNode/DialogUiController")
+menu_ui_controller = NodePath("RootUiNode/MenuUi")
+
+[node name="RootUiNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerUiController" type="Control" parent="RootUiNode" node_paths=PackedStringArray("health_controller", "backpack_controller")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ci3n1")
+health_controller = NodePath("HealthBarContainer")
+backpack_controller = NodePath("BackpackUiController")
+
+[node name="BackpackUiController" type="Control" parent="RootUiNode/PlayerUiController" node_paths=PackedStringArray("ship_count_label")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.08001709
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_f3p0y")
+ship_count_label = NodePath("BackpackContainer/ShipCountContainer/Label")
+
+[node name="BackpackContainer" type="VBoxContainer" parent="RootUiNode/PlayerUiController/BackpackUiController"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShipCountContainer" type="Control" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer/ShipCountContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ship count: 0"
+vertical_alignment = 1
+
+[node name="ShipInventoryContainer" type="Control" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer/ShipInventoryContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShipInventoryColumn03" type="Control" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer/ShipInventoryContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShipInventoryColumn02" type="Control" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer/ShipInventoryContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShipInventoryColumn01" type="Control" parent="RootUiNode/PlayerUiController/BackpackUiController/BackpackContainer/ShipInventoryContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthBarContainer" type="Control" parent="RootUiNode/PlayerUiController" node_paths=PackedStringArray("health_bar_background", "health_bar")]
+layout_mode = 1
+anchor_right = 0.328
+anchor_bottom = 0.1
+offset_right = 0.07998657
+mouse_filter = 2
+script = ExtResource("3_mug08")
+health_bar_background = NodePath("HealthBarBackground")
+health_bar = NodePath("HealthBarBackground/HealthBar")
+
+[node name="Label" type="Label" parent="RootUiNode/PlayerUiController/HealthBarContainer"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+text = "HP: "
+vertical_alignment = 1
+
+[node name="HealthBarBackground" type="ColorRect" parent="RootUiNode/PlayerUiController/HealthBarContainer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -179.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.67058825, 0.60784316, 0.5568628, 1)
+
+[node name="HealthBar" type="ColorRect" parent="RootUiNode/PlayerUiController/HealthBarContainer/HealthBarBackground"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 116.0
+grow_vertical = 2
+color = Color(0.4745098, 0.26666668, 0.2901961, 1)
+
+[node name="DialogUiController" type="Control" parent="RootUiNode" node_paths=PackedStringArray("dialogue_rtl", "dialogue_container")]
+visible = false
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.8
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = 0.11999512
+offset_top = 0.15997314
+offset_right = 0.3199768
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("4_1w1lr")
+dialogue_rtl = NodePath("DialogContainer/RichTextLabel")
+dialogue_container = NodePath("DialogContainer")
+
+[node name="DialogContainer" type="Control" parent="RootUiNode/DialogUiController"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="RootUiNode/DialogUiController/DialogContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5176471, 0.47058824, 0.45882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RootUiNode/DialogUiController/DialogContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "xxxxxx"
+scroll_active = false
+horizontal_alignment = 1
+drag_and_drop_selection_enabled = false
+
+[node name="MenuUi" type="Control" parent="RootUiNode" node_paths=PackedStringArray("start_game_button", "continue_game_button")]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_mug08")
+start_game_button = NodePath("StartGameButton")
+continue_game_button = NodePath("ContinueGameButton")
+
+[node name="StartGameButton" type="Button" parent="RootUiNode/MenuUi"]
+z_index = 5
+layout_mode = 0
+offset_left = 116.0
+offset_top = 34.0
+offset_right = 251.0
+offset_bottom = 65.0
+text = "Start New Game"
+
+[node name="ContinueGameButton" type="Button" parent="RootUiNode/MenuUi"]
+z_index = 5
+layout_mode = 0
+offset_left = 280.0
+offset_top = 34.0
+offset_right = 432.0
+offset_bottom = 65.0
+size_flags_vertical = 8
+text = "Continue Game"

@@ -4,6 +4,7 @@ class_name RootLevelController
 
 
 func _ready() -> void:
+	GameEventBus.scene_started.emit(GameEnums.scene_type.ROOT_SHIP_SCENE)
 	if LevelLoader.does_level_exist("root"):
 		var root_level_data: LevelData = LevelLoader.load_level("root")
 		_regenerate_assets(root_level_data)
@@ -33,6 +34,7 @@ func serialize_level() -> void:
 	var ships_data: Array[ShipData] = []
 	for ship in ship_objects:
 		if not ship is BottledShip: continue
+		if ship.is_marked_to_destroy(): continue
 		
 		ships_data.append(ship.generate_ship_data())
 		

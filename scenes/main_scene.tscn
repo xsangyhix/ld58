@@ -1,49 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnfe2m502tkg3"]
+[gd_scene load_steps=3 format=3 uid="uid://bnfe2m502tkg3"]
 
 [ext_resource type="Script" uid="uid://bsu0tgi8pvoco" path="res://scripts/controllers/main_menu/main_menu_controller.gd" id="1_pw63i"]
-[ext_resource type="Script" uid="uid://dbft5y0cmyvrg" path="res://scripts/controllers/main_menu/menu_ui_controller.gd" id="1_w2twt"]
 [ext_resource type="PackedScene" uid="uid://bxlmxp78rgsbj" path="res://scenes/title_screen.tscn" id="3_7ykc4"]
 
-[node name="MainScene" type="Node2D" node_paths=PackedStringArray("menu_ui_controller")]
+[node name="MainScene" type="Node2D"]
 script = ExtResource("1_pw63i")
-menu_ui_controller = NodePath("MenuUi")
 
 [node name="Ship01" parent="." instance=ExtResource("3_7ykc4")]
 position = Vector2(-395, -32)
-
-[node name="MenuUi" type="Control" parent="." node_paths=PackedStringArray("start_game_button", "continue_game_button")]
-z_index = 10
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -160.0
-offset_right = 320.0
-offset_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_w2twt")
-start_game_button = NodePath("StartGameButton")
-continue_game_button = NodePath("ContinueGameButton")
-
-[node name="StartGameButton" type="Button" parent="MenuUi"]
-z_index = 5
-layout_mode = 0
-offset_left = 116.0
-offset_top = 34.0
-offset_right = 251.0
-offset_bottom = 65.0
-text = "Start New Game"
-
-[node name="ContinueGameButton" type="Button" parent="MenuUi"]
-z_index = 5
-layout_mode = 0
-offset_left = 280.0
-offset_top = 34.0
-offset_right = 432.0
-offset_bottom = 65.0
-size_flags_vertical = 8
-text = "Continue Game"

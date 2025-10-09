@@ -161,7 +161,7 @@ collector_voice_array = Array[AudioStream]([ExtResource("5_dg6i2"), ExtResource(
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("21_w66tu")
-initial_state = NodePath("StateCollectorTalking")
+initial_state = NodePath("StateCollectorIdle")
 metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
 
 [node name="StateCollectorIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]

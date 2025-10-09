@@ -36,6 +36,7 @@ static func _save(file_path: String, level_data: LevelData) -> void:
 	
 static func _generate_level_path(level_id: String) -> String:
 	var save_dir_path: String = _generate_save_directory_path()
+	if level_id == "root": return "{save_dir_path}.tres".format({"save_dir_path": save_dir_path})
 	return "{save_dir_path}/level_{level_id}.tres".format({"save_dir_path": save_dir_path, "level_id": level_id})
 
 

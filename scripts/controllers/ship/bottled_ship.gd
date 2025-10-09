@@ -5,11 +5,12 @@ class_name BottledShip
 @export var ship_type: String
 @export var ship_tier: String
 @export var ship_particle_controller: BottledShipParticleController
+@export var ship_ui_controller: ShipUiController
 @export var ship_sprite_2d: Sprite2D
 @export var ship_area_2d: Area2D
 
 
-var ship_ui_controller: ShipUiController
+
 var ship_state_machine: StateMachine
 var ship_id: String = UUID.v4()
 var parent_id: String
@@ -22,9 +23,6 @@ func _ready() -> void:
 	
 	ship_area_2d.body_entered.connect(on_player_enter)
 	ship_area_2d.body_exited.connect(on_player_exit)
-	
-	
-	ship_ui_controller = find_child("ShipUIController")
 	
 func on_player_enter(player_node: Node2D) -> void:
 	if not player_node.is_in_group("player"):
@@ -41,22 +39,12 @@ func on_player_exit(player_node: Node2D) -> void:
 
 
 func _process(_delta: float) -> void:
-
-	_process_ship_visibility()
 	
 	if _get_fsm_context_bool("load_ship", false):
 		_load_next_ship()
 	
 	if _get_fsm_context_bool("collect_ship", false):
 		_get_player().collect_ship(generate_ship_data())
-		get_parent().remove_child(self)
-		queue_free()
-		
-	
-	if _get_fsm_context_bool("break", false):
-		_play_break()
-		
-	if _get_fsm_context_bool("remove", false):
 		get_parent().remove_child(self)
 		queue_free()
 		
@@ -81,16 +69,6 @@ func _load_next_ship() -> void:
 	_audio_hub.play_bottle_open()
 	var ship_packed_scene = PrefabLoader.load_level(LevelLoader.load_current_level())
 	get_tree().change_scene_to_packed(ship_packed_scene)
-
-
-func _process_ship_visibility() -> void:
-	var fsm_context_memory = ship_state_machine.fsm_context.context_memory
-	
-	if not fsm_context_memory.has("is_ship_enter_label_visible"): return
-	
-	var target_visibility = fsm_context_memory["is_ship_enter_label_visible"]
-	if ship_ui_controller.is_ship_label_visible() != target_visibility:
-		ship_ui_controller.set_ship_label_visibility(target_visibility)
 	
 func generate_ship_data() -> ShipData:
 	var ship_data: ShipData = ShipData.new()
@@ -127,3 +105,8 @@ func mark_to_destroy() -> void:
 	
 func _get_player() -> PlayerController:
 	return get_tree().get_nodes_in_group("player")[0]
+	
+func is_marked_to_destroy() -> bool:
+	var ship_state: State = ship_state_machine.current_state
+	if ship_state is StateShipBreak: return true
+	else: return false

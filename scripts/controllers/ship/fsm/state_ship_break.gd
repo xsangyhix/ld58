@@ -2,12 +2,16 @@
 class_name StateShipBreak
 
 
-func enter(_fsm_context: FsmContext) -> void:
-	_fsm_context.context_memory["break"] = true
-	_fsm_context.context_memory["is_ship_enter_label_visible"] = false
-	
-	trigger_remove_after_delay(10, _fsm_context)
+@export var bottled_ship_controller: BottledShip
 
-func trigger_remove_after_delay(delay: float, fsm_context: FsmContext) -> void:
+
+func enter(_fsm_context: FsmContext) -> void:
+	bottled_ship_controller._play_break()
+	bottled_ship_controller.ship_ui_controller.set_ship_label_visibility(false)
+	
+	trigger_remove_after_delay(10)
+
+func trigger_remove_after_delay(delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
-	fsm_context.context_memory["remove"] = true	
+	bottled_ship_controller.get_parent().remove_child(bottled_ship_controller)
+	bottled_ship_controller.queue_free()

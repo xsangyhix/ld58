@@ -30,11 +30,12 @@ angular_velocity_min = -500.0
 angular_velocity_max = 499.99997
 gravity = Vector3(0, 98, 0)
 
-[node name="BottledShip" type="Node2D" node_paths=PackedStringArray("ship_particle_controller", "ship_sprite_2d", "ship_area_2d") groups=["ships"]]
+[node name="BottledShip" type="Node2D" node_paths=PackedStringArray("ship_particle_controller", "ship_ui_controller", "ship_sprite_2d", "ship_area_2d") groups=["ships"]]
 script = ExtResource("1_wnj27")
 ship_type = "random"
 ship_tier = "T1"
 ship_particle_controller = NodePath("ParticleSystem")
+ship_ui_controller = NodePath("ShipUIController")
 ship_sprite_2d = NodePath("Sprite2D")
 ship_area_2d = NodePath("Area2D")
 
@@ -98,15 +99,18 @@ script = ExtResource("4_864rt")
 initial_state = NodePath("StateShipPassive")
 metadata/_custom_type_script = "uid://by1s7vmqc7ssu"
 
-[node name="StateShipActive" type="Node" parent="StateMachine"]
+[node name="StateShipActive" type="Node" parent="StateMachine" node_paths=PackedStringArray("bottled_ship_controller")]
 script = ExtResource("5_s6q83")
+bottled_ship_controller = NodePath("../..")
 
-[node name="StateShipPassive" type="Node" parent="StateMachine"]
+[node name="StateShipPassive" type="Node" parent="StateMachine" node_paths=PackedStringArray("bottled_ship_controller")]
 script = ExtResource("6_iaq3n")
+bottled_ship_controller = NodePath("../..")
 metadata/_custom_type_script = "uid://fa8wit0syaea"
 
-[node name="StateShipBreak" type="Node" parent="StateMachine"]
+[node name="StateShipBreak" type="Node" parent="StateMachine" node_paths=PackedStringArray("bottled_ship_controller")]
 script = ExtResource("7_4cd4c")
+bottled_ship_controller = NodePath("../..")
 
 [node name="ParticleSystem" type="Node2D" parent="." node_paths=PackedStringArray("glass_particles", "wood_particles")]
 script = ExtResource("8_ohcrp")
