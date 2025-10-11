@@ -4,7 +4,7 @@ class_name RootLevelController
 
 
 func _ready() -> void:
-	GameEventBus.scene_started.emit(GameEnums.scene_type.ROOT_SHIP_SCENE)
+	GameEventBus.scene_started.emit.call_deferred(GameEnums.scene_type.ROOT_SHIP_SCENE)
 	if LevelLoader.does_level_exist("root"):
 		var root_level_data: LevelData = LevelLoader.load_level("root")
 		_regenerate_assets(root_level_data)
@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 	var player: PlayerController = _get_player()
 	player.times_entered_root += 1
-	GameEventBus.player_entered_root.emit(player)
+	GameEventBus.player_entered_root.emit.call_deferred(player)
 
 func get_level_id() -> String:
 	return "root"

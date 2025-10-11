@@ -54,6 +54,7 @@ func _get_fsm_context_bool(value_name: String, _default_value: bool = false) -> 
 
 	
 func _load_next_ship() -> void:
+	RootUi.dialogue_ui_controller.clear_dialogue()
 	
 	if LevelLoader.does_level_exist(ship_id):
 		LevelLoader.set_level_as_current(ship_id)

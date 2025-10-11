@@ -8,7 +8,7 @@ var ship_type: String
 var ship_tier: String
 
 func _ready() -> void:
-	GameEventBus.scene_started.emit(GameEnums.scene_type.SHIP_SCENE)
+	GameEventBus.scene_started.emit.call_deferred(GameEnums.scene_type.SHIP_SCENE)
 	var level_data: LevelData = LevelLoader.load_current_level()
 	
 	if level_data.is_initialized:
@@ -26,6 +26,8 @@ func _input(event: InputEvent) -> void:
 
 	
 func exit_to_parent() -> void:
+	RootUi.dialogue_ui_controller.clear_dialogue()
+	
 	serialize_level()
 	
 	MainAudioHub.play_bottle_exit()

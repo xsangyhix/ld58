@@ -13,17 +13,24 @@ var _recently_played: Array[int] = []
 
 func enter(_fsm_context: FsmContext) -> void:
 	collector_audio_controller.finished.connect(_start_next_sound)
+	GameEventBus.dialogue_print_finished.connect(_on_dialogue_end)
 	_start_next_sound()
 	_recently_played = []
 	
-	GameEventBus.dialogue_finished_print.connect(_on_dialogue_end)
+	print("state collector talking ready")
 	animated_sprite.set_animation("talking")
 	
 func exit(_fsm_context: FsmContext) -> void:
-	collector_audio_controller.finished.disconnect(_start_next_sound)
 	_recently_played = []
 	
-	GameEventBus.dialogue_finished_print.disconnect(_on_dialogue_end)
+	collector_audio_controller.finished.disconnect(_start_next_sound)
+	GameEventBus.dialogue_print_finished.disconnect(_on_dialogue_end)
+
+
+func update(_delta: float, _fsm_context: FsmContext) -> void:
+	if !RootUi.dialogue_ui_controller.is_finished_printing():
+		_on_dialogue_end()
+
 
 func _start_next_sound() -> void:
 	await get_tree().create_timer(word_delay_sec).timeout

@@ -22,10 +22,6 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("3_y4r1p")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("5_3v2ag")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("5_3v2ag")
 region = Rect2(32, 0, 32, 32)
@@ -37,6 +33,10 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("5_3v2ag")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("5_3v2ag")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
 animations = [{
@@ -69,9 +69,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_a8ls1")
 }, {
 "duration": 1.0,
@@ -79,20 +76,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_ui_controller", "_player_sprite") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_player_sprite") groups=["player"]]
 script = ExtResource("1_g2els")
 speed = 150.0
 jump_velocity = -250.0
 acceleration = 150.0
 deceleration = 500.0
 floor_drag = 900.0
-_ui_controller = NodePath("")
 _player_sprite = NodePath("PlayerSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -102,7 +101,7 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"fall"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]

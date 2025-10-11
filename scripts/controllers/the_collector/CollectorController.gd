@@ -15,8 +15,9 @@ class_name CollectorController
 
 func _ready() -> void:
 	GameEventBus.player_entered_root.connect(_emit_dialogue)
+	GameEventBus.submit_dialogue.connect(_print_dialogue)
 	if _is_in_title_screen:
-		_emit_greeting()
+		_emit_greeting.call_deferred()
 		
 
 	
@@ -49,18 +50,6 @@ func _emit_end_game() -> void:
 func _emit_greeting() -> void:
 	GameEventBus.submit_dialogue.emit(text_greetings.pick_random())
 
-func _get_player() -> PlayerController:
-	var player_nodes := get_tree().get_nodes_in_group("player")
-	
-	if player_nodes.size() == 0:
-		push_error("Player not found! Returning null.")
-		return null
-	
-	if player_nodes.size() > 1:
-		push_error("More than one player! Returning first one.")
-		
-	if not player_nodes[0] is PlayerController:
-		push_error("Invalid player node type. Returning null.")
-		return null
-		
-	return player_nodes[0]
+
+func _print_dialogue(dialogue_resource: DialogueResource) -> void:
+	RootUi.dialogue_ui_controller.submit_dialogue(dialogue_resource)

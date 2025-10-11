@@ -18,10 +18,11 @@ func _ready() -> void:
 
 func _on_body_enter(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		call_deferred("exit_to_parent", body)
+		exit_to_parent.call_deferred(body)
 
 
 func exit_to_parent(player_body: PlayerController) -> void:
+	RootUi.dialogue_ui_controller.clear_dialogue()
 	player_body.visible = false
 	player_body.position = player_respawn_point.position
 	
